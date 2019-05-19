@@ -1,0 +1,67 @@
+﻿@model GB.Web.Models.CreateUser
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Register
+    </div>
+    <div class="panel-body">
+        @using (var form = Html.BeginForm("Add", "User", FormMethod.Post))
+        {
+            if (Model != null)
+            {
+                @Html.HiddenFor(x => x.ID)
+            }
+            <div class="form-group">
+                @Html.LabelFor(x => x.Username)
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Username, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.FullName)
+                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.FullName, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.PhoneNumber)
+                @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.PhoneNumber, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email)
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password)
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.BirthDate)
+                @Html.TextBoxFor(x => x.BirthDate, new { @type = "date" })
+                @Html.ValidationMessageFor(x => x.BirthDate, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.RoleID)
+                @Html.DropDownListFor(x => x.RoleID, Enumerable.Empty<SelectListItem>(), new { @id = "ddl-roles" })
+            </div>
+
+            <button class="btn btn-primary pull-right" type="submit">Zapisz</button>
+        }
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    var rolesSelect = $("#ddl-roles");
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:56946/api/role/GetAll",
+        success: function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var option = new Option(data[i].Name, data[i].ID, false, false);
+                rolesSelect.append(option);
+            }
+        }
+    });
+</script>
