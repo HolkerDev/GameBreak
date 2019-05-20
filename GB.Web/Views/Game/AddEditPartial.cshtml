@@ -1,0 +1,114 @@
+﻿@model GB.Web.Models.CreateGame
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Register
+    </div>
+    <div class="panel-body row">
+        @using (var form = Html.BeginForm("Add", "Game", FormMethod.Post, new
+        { enctype = "multipart/form-data" }))
+        {
+            if (Model != null)
+            {
+                @Html.HiddenFor(x => x.ID)
+            }
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.Name)
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.ReleaseDate)
+                @Html.TextBoxFor(x => x.ReleaseDate, new { @type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ReleaseDate, null, new { @class = "text=danger" })
+            </div>
+
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.Price)
+                @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.Description)
+                @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.Image)
+                @Html.TextBoxFor(x => x.Image, new { type = "file" })
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.ProductionID)
+                @Html.DropDownListFor(x => x.ProductionID, Enumerable.Empty<SelectListItem>(), new { @id = "ddl-production", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ProductionID, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.GamePlatformID)
+                @Html.DropDownListFor(x => x.GamePlatformID, Enumerable.Empty<SelectListItem>(), new { @id = "ddl-gameplatform", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.GamePlatformID, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.AgeRatingID)
+                @Html.DropDownListFor(x => x.AgeRatingID, Enumerable.Empty<SelectListItem>(), new { @id = "ddl-agerating", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AgeRatingID, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group col-md-12">
+                @Html.LabelFor(x => x.GameGenres)
+                @Html.ListBoxFor(x => x.GameGenres, new SelectList(Enumerable.Empty<SelectListItem>(), "Name", "ID", null), new { @id = "ddl-gamegenres", SelectionMode = "Multiple", @class = "multiselect form-control", @style = "width: 100%;", multiple = "multiple" })
+            </div>
+            <button class="btn btn-primary pull-right" type="submit">Zapisz</button>
+        }
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<script>
+    var productionSelect = $("#ddl-production");
+    var gamePlatformSelect = $("#ddl-gameplatform");
+    var ageRatingSelect = $("#ddl-agerating");
+    var gameGenreSelect = $("#ddl-gamegenres");
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:56946/api/production/GetAll",
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var option = new Option(data[i].Name, data[i].ID, false, false);
+                productionSelect.append(option);
+            }
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:56946/api/gamePlatform/GetAll",
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var option = new Option(data[i].Name, data[i].ID, false, false);
+                gamePlatformSelect.append(option);
+            }
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:56946/api/ageRating/GetAll",
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var option = new Option(data[i].Name, data[i].ID, false, false);
+                ageRatingSelect.append(option);
+            }
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:56946/api/genre/GetAll",
+        success: function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var option = new Option(data[i].Name, data[i].ID, false, false);
+                gameGenreSelect.append(option);
+            }
+        }
+    });
+</script>

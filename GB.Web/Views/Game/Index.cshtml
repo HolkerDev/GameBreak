@@ -1,0 +1,38 @@
+﻿@using GB.Data.Dto
+@model List<GameDto>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<br />
+<table class="table table-striped table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Release Date</th>
+            <th>Production</th>
+            <th>Game Platform</th>
+            <th>Age Rating</th>
+            <th>Genres</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+        @foreach (var game in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("ViewGame","Game",new { gameID =game.ID})">@game.Name</a></td>
+                <td>@game.ReleaseDate.ToShortDateString()</td>
+                <td>@game.Production.Name</td>
+                <td>@game.GamePlatform.Name</td>
+                <td>@game.AgeRating.Name</td>
+                <td>@foreach (var gameGenre in game.GameGenres) {
+                    <span>@gameGenre.GenreName</span>
+                }</td>
+                <td>@game.Price</td>
+                <td>@game.Description</td>
+            </tr>
+        }
+    </thead>
+</table>
