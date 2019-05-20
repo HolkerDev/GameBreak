@@ -8,6 +8,7 @@ namespace GB.Data.Dto
 {
     public class AddToCartDto
     {
+        public int ID { get; set; }
         public int GameID { get; set; }
         public string GameName { get; set; }
         public int LocationID { get; set; }

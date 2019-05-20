@@ -12,6 +12,7 @@
             <th>Game Name</th>
             <th>Location </th>
             <th>Price</th>
+            <th></th>
         </tr>
         @foreach (var cartItem in Model)
         {
@@ -19,6 +20,11 @@
                 <td>@cartItem.GameName</td>
                 <td>@cartItem.LocationName</td>
                 <td>@cartItem.Price</td>
+                <td>
+                    <button id="btn_delete" class="label label-primary" data-slno="@cartItem.GameID" onclick="location.href='@Url.Action("Remove","Cart", cartItem)'">
+                       Remove from Cart
+                    </button>
+                </td>
             </tr>
         }
     </thead>
