@@ -1,4 +1,5 @@
 ﻿using GB.Data.Dto;
+using GB.Web.CustomAuthentication;
 using GB.Web.Logic;
 using GB.Web.Models;
 using GB.Web.ViewModels;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace GB.Web.Controllers
 {
+    [CustomAuthorize(Roles = "Client")]
     public class GameController : Controller
     {
 

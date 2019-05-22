@@ -93,9 +93,30 @@ namespace GB.Data.Repositories
         public void Remove(int id)
         {
             User u = _dbContext.Users.SingleOrDefault(x => x.ID == id);
-            if(u==null)
+            if (u == null)
                 throw new Exception(string.Format("User does not exist already"));
             this.Delete(u);
+        }
+
+        public User ValidateUser(string username, string password)
+        {
+            User user = new User();
+            user = _dbContext.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
+            return user;
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            User user = new User();
+            user = _dbContext.Users.Include(x=>x.Role).SingleOrDefault(x => x.Username == username);
+            return user;
+        }
+
+        public string[] GetUserRolesByUsername(string username)
+        {
+            string[] roles = new string[] { };
+            roles = _dbContext.Users.Include(x => x.Role).Select(x => x.Role.Name).ToArray();
+            return roles;
         }
     }
 }

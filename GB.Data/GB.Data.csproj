@@ -171,11 +171,16 @@
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\AgeRatingService.cs" />
+    <Compile Include="Services\GameCopyService.cs" />
+    <Compile Include="Services\GameCopyStatusService.cs" />
     <Compile Include="Services\GameGenreService.cs" />
     <Compile Include="Services\GamePlatformService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\GenreService.cs" />
     <Compile Include="Services\LocationService.cs" />
+    <Compile Include="Services\OrderGameCopyService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\ProductionGamePlatformService.cs" />
     <Compile Include="Services\ProductionService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserService.cs" />

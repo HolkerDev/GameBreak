@@ -15,7 +15,7 @@ namespace GB.Data.Services
 
     public class AgeRatingService : IAgeRatingService
     {
-        private readonly AgeRatingRepository ageRatingRepo;
+        private AgeRatingRepository ageRatingRepo;
 
         public AgeRatingService(AgeRatingRepository ageRatingRepository)
         {

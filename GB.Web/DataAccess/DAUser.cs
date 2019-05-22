@@ -1,0 +1,19 @@
+﻿using GB.Data.Dto;
+using GB.Entities.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace GB.Web.DataAccess
+{
+    public class DAUser
+    {
+        public int UserID { get; set; }
+        public string Username { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public int RoleID { get; set; }
+        public virtual DARole Role { get; set; }
+    }
+}
