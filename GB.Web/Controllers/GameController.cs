@@ -67,7 +67,7 @@ namespace GB.Web.Controllers
                     Description = game.Description,
                     GameGenres = game.GameGenres,
                     Image = fileData
-            });
+                });
                 return RedirectToAction("Index");
             }
 

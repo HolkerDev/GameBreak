@@ -138,6 +138,8 @@
     <Compile Include="Dto\GamePlatformDto.cs" />
     <Compile Include="Dto\GenreDto.cs" />
     <Compile Include="Dto\LocationAvailableDto.cs" />
+    <Compile Include="Dto\OrderDto.cs" />
+    <Compile Include="Dto\OrderGameCopyDto.cs" />
     <Compile Include="Dto\ProductionDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />
     <Compile Include="Dto\UserDto.cs" />

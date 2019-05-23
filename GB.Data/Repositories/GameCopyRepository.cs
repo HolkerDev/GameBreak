@@ -15,5 +15,22 @@ namespace GB.Data.Repositories
         {
 
         }
+
+        public bool UpdateGameCopies(List<GameCopy> gameCopies, int userID)
+        {
+            try
+            {
+                foreach(GameCopy gameCopy in gameCopies){
+                    gameCopy.UserID = userID;
+                    gameCopy.GameCopyStatusID = 2;
+                    this.Update(gameCopy);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

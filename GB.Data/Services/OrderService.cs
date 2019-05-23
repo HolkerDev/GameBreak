@@ -1,4 +1,6 @@
-﻿using GB.Data.Repositories;
+﻿using GB.Data.Dto;
+using GB.Data.Repositories;
+using GB.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,12 @@ namespace GB.Data.Services
         public OrderService(OrderRepository orderRepository)
         {
             this.orderRepository = orderRepository;
+        }
+
+        public Order AddOrder( OrderDto ord)
+        {
+            Order order = orderRepository.AddOrder(ord);
+            return order;
         }
     }
 }

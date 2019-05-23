@@ -154,6 +154,7 @@
     <Compile Include="Controllers\GamePlatformController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
