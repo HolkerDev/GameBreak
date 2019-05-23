@@ -27,5 +27,27 @@ namespace GB.Data.Services
             Order order = orderRepository.AddOrder(ord);
             return order;
         }
+
+        public List<OrderDto> GetUserOrders(int userID)
+        {
+            return orderRepository.GetUserOrders(userID);
+        }
+
+        public OrderDto Get(int orderID)
+        {
+            return orderRepository.Get(orderID);
+        }
+
+        public List<OrderDto> GetAll()
+        {
+            return orderRepository.GetAll();
+        }
+
+        public List<OrderDto> GetOrdersWithPenalties()
+        {
+            return orderRepository.GetOrdersWithPenalties();
+        }
+
+        
     }
 }

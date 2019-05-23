@@ -149,6 +149,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AgeRatingController.cs" />
+    <Compile Include="Controllers\A_OrderController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GameGenreController.cs" />
     <Compile Include="Controllers\GamePlatformController.cs" />

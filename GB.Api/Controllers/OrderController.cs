@@ -23,12 +23,12 @@ namespace GB.Api.Controllers
             this.gameCopyService = gameCopyService;
         }
 
-        //[Route("Get")]
-        //[HttpGet]
-        //public IHttpActionResult Get(int gameID)
-        //{
-        //    return Json(orderService.Get(gameID));
-        //}
+        [Route("Get")]
+        [HttpGet]
+        public IHttpActionResult Get(int orderID)
+        {
+            return Json(orderService.Get(orderID));
+        }
 
         //[Route("GetAll")]
         //[HttpGet]
@@ -44,6 +44,13 @@ namespace GB.Api.Controllers
             List<GameCopy> gameCopiesToUpdate = orderGameCopyService.AddOrderGameCopies(order, ord.OrderGameCopies);
             gameCopyService.UpdateGameCopies(gameCopiesToUpdate, order.UserID);
             return Json(true);
+        }
+
+        [Route("GetUserOrders")]
+        [HttpGet]
+        public IHttpActionResult GetUserOrders(int userID)
+        {
+            return Json(orderService.GetUserOrders(userID));
         }
     }
 }

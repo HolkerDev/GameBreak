@@ -44,5 +44,21 @@ namespace GB.Web.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public ActionResult ViewUserOrders()
+        {
+            ViewOrdersVM vm = new ViewOrdersVM();
+            CustomPrincipal user = HttpContext.User as CustomPrincipal;
+            vm.Orders = new ApiClient().GetData<List<OrderDto>>("api/order/GetUserOrders?userID=" + user.UserID);
+            return View(vm);
+        }
+
+        [HttpGet]
+        public ActionResult Get(int orderID)
+        {
+            OrderDto order = new ApiClient().GetData<OrderDto>("api/order/Get?orderID=" + orderID);
+            return View(order);
+        }
     }
 }

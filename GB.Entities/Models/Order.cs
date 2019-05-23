@@ -20,6 +20,8 @@ namespace GB.Entities.Models
 
         public DateTime ExpiresAt { get; set; }
 
+        public DateTime? IsFinishedAt { get; set; }
+
         public decimal TotalPrice { get; set; }
 
         public virtual User User { get; set; }
