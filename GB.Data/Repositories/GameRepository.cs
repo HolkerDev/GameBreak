@@ -117,6 +117,32 @@ namespace GB.Data.Repositories
 
         }
 
+        public Game UpdateGame(CreateGameDto game)
+        {
+            try
+            {
+                var g = _dbContext.Games.SingleOrDefault(x => x.ID == game.ID);
+                if (g == null)
+                    throw new Exception(string.Format("Cannot edit game, because game is not found."));
+                g.Name = game.Name;
+                g.ReleaseDate = game.ReleaseDate;
+                g.ProductionID = game.ProductionID;
+                g.GamePlatformID = game.GamePlatformID;
+                g.AgeRatingID = game.AgeRatingID;
+                g.Price = game.Price;
+                g.Description = game.Description;
+                g.Image = game.Image;
+                this.Update(g);
+
+                return g;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public List<GameDto> GetAll()
         {
             try

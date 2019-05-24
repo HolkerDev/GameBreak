@@ -27,5 +27,11 @@ namespace GB.Data.Services
             return gameGenresAdded;
         }
 
+        public List<GameGenre> UpdateGameGenres( List<int> gameGenres, int gameId)
+        {
+            List<GameGenre> gameGenresAdded = gameGenreRepo.AddGameGenres(gameGenres, gameId);
+            return gameGenresAdded;
+        }
+
     }
 }

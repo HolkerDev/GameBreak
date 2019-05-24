@@ -39,5 +39,13 @@ namespace GB.Api.Controllers
             gameService.AddGame(game);
             return Json(true);
         }
+
+        [HttpPost]
+        [Route("Post/Update")]
+        public IHttpActionResult Update([FromBody] CreateGameDto game)
+        {
+            gameService.UpdateGame(game);
+            return Json(true);
+        }
     }
 }

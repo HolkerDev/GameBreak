@@ -40,9 +40,15 @@
             <td>@Model.Game.Description</td>
         </tr>
 
-
     </thead>
 </table>
+@if (HttpContext.Current.User.IsInRole("Administrator"))
+{
+    <button type="button" class="btn btn-primary" id="btn_delete" data-slno="@Model.Game.ID" onclick="location.href='@Url.Action("Edit","Game", new { gameID =  Model.Game.ID})'">
+        Edit Game
+    </button>
+}
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#locationModal">
     Add To Cart
 </button>
