@@ -138,6 +138,8 @@
     <Compile Include="Dto\GamePlatformDto.cs" />
     <Compile Include="Dto\GenreDto.cs" />
     <Compile Include="Dto\LocationAvailableDto.cs" />
+    <Compile Include="Dto\OrderDto.cs" />
+    <Compile Include="Dto\OrderGameCopyDto.cs" />
     <Compile Include="Dto\ProductionDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
@@ -152,6 +154,10 @@
     <Compile Include="Migrations\201905171843485_GameCopy_NullableUser.cs" />
     <Compile Include="Migrations\201905171843485_GameCopy_NullableUser.Designer.cs">
       <DependentUpon>201905171843485_GameCopy_NullableUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905231801233_Order_IsFinishedAt.cs" />
+    <Compile Include="Migrations\201905231801233_Order_IsFinishedAt.Designer.cs">
+      <DependentUpon>201905231801233_Order_IsFinishedAt.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905171843485_GameCopy_NullableUser.resx">
       <DependentUpon>201905171843485_GameCopy_NullableUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905231801233_Order_IsFinishedAt.resx">
+      <DependentUpon>201905231801233_Order_IsFinishedAt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -20,12 +20,28 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>
-                        <a href="@Url.Action("UserCart", "Cart")"> <span class="glyphicon glyphicon-shopping-cart" style="color:antiquewhite"></span>Cart <span class="badge">@Session["count"]</span></a>
-                    </li>
-                </ul>
+                    <li>@Html.ActionLink("Games", "Index", "Game")</li>
+                    @if (HttpContext.Current.User.IsInRole("Client"))
+                    {
+                        <li>@Html.ActionLink("Profile", "Index", "Profile")</li>
+                        <li>@Html.ActionLink("My Orders", "ViewUserOrders", "Order")</li>
+                        <li> <a href="@Url.Action("UserCart", "Cart")"> <span class="glyphicon glyphicon-shopping-cart" style="color:antiquewhite"></span>Cart <span class="badge">@Session["count"]</span></a></li>
+                    }
+                    else if (HttpContext.Current.User.Identity.IsAuthenticated == false)
+                    {
+                        <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                    }
+                    else if (HttpContext.Current.User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Orders with Penalties", "GetOrdersWithPenalties", "A_Order")</li>
+                        <li>@Html.ActionLink("Orders", "GetOrders", "A_Order")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Log Out", "LogOut", "Account")</li>
+                    }
+
+                    </ul>
             </div>
         </div>
     </div>

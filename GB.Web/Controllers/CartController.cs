@@ -1,4 +1,5 @@
 ﻿using GB.Data.Dto;
+using GB.Web.CustomAuthentication;
 using GB.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace GB.Web.Controllers
 {
+    [CustomAuthorize(Roles = "Client")]
     public class CartController : Controller
     {
         // GET: AddToCart  
@@ -68,6 +70,13 @@ namespace GB.Web.Controllers
             cartItems.RemoveAll(x => x.ID == cartItem.ID);
             Session["cart"] = cartItems;
             Session["count"] = Convert.ToInt32(Session["count"]) - 1;
+            return RedirectToAction("UserCart", "Cart");
+        }
+
+        public ActionResult ClearCart()
+        {
+            Session["cart"] = new List<AddToCartDto>();
+            Session["count"] = 0;
             return RedirectToAction("UserCart", "Cart");
         }
     }

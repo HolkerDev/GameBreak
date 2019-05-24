@@ -1,4 +1,5 @@
 ﻿using GB.Data.DAL;
+using GB.Data.Dto;
 using GB.Entities.Models;
 using GB.Entities.Repositories;
 using System;
@@ -14,6 +15,51 @@ namespace GB.Data.Repositories
         public OrderGameCopyRepository(ApplicationContext db) : base(db)
         {
 
+        }
+
+        public List<GameCopy> AddOrderGameCopies( Order order, List<OrderGameCopyDto> orderGameCopies)
+        {
+            try
+            {
+                List<GameCopy> gameCopiesToUpdate = new List<GameCopy>();
+                foreach(OrderGameCopyDto orderGameCopy in orderGameCopies)
+                {
+                    GameCopy o = _dbContext.GameCopies.FirstOrDefault(x=>x.GameID == orderGameCopy.GameID && x.LocationID == orderGameCopy.LocationID && x.GameCopyStatusID == 1);
+                    if (o != null)
+                    {
+                        OrderGameCopy ogc = new OrderGameCopy()
+                        {
+                            GameCopyID = o.ID,
+                            OrderID = order.ID
+                        };
+                        gameCopiesToUpdate.Add(o);
+                        this.Add(ogc);
+                    }
+                    else {
+                        var gameName = _dbContext.Games.FirstOrDefault(x => x.ID == orderGameCopy.GameID).Name;
+                        throw new Exception("No game copy is longer available for game " + gameName);
+                    }
+                }
+
+                return gameCopiesToUpdate;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<int> GetAllGameCopiesToReturn(int orderID)
+        {
+            try
+            {
+                List<int> gameCopies = _dbContext.OrderGameCopies.Where(g => g.OrderID == orderID).Select(g => g.GameCopyID).ToList();
+                return gameCopies;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

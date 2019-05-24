@@ -1,0 +1,51 @@
+﻿@model GB.Data.Dto.OrderDto
+@{
+    ViewBag.Title = "Order";
+}
+
+<table class="table table-striped table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Created At</th>
+            <th>Expires At</th>
+            <th>Total Price</th>
+            <th>Is Returned</th>
+            <th>Games</th>
+        </tr>
+
+        <tr>
+            <td>@Model.ID</td>
+            <td>@Model.CreatedAt</td>
+            <td>
+                @if (Model.ExpiresAt >= DateTime.Now)
+                {
+                    <span>@Model.ExpiresAt.Subtract(Model.CreatedAt).Days days</span>
+                }
+                else
+                {
+                    <span>EXPIRED</span>
+                }
+            </td>
+            <td>@Model.TotalPrice</td>
+            <td>
+                @if (Model.IsFinishedAt != null)
+                {
+                    <span>Yes</span>
+                }
+                else
+                {
+                    <span>No</span>
+                }
+            </td>
+            <td>
+                @foreach( var game in Model.OrderGameCopies)
+                {
+                    <span>@game.GameName, @game.LocationName</span><br />
+                }
+            </td>
+        </tr>
+
+    </thead>
+</table>
+

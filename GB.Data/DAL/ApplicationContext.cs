@@ -25,7 +25,7 @@ namespace GB.Data.DAL
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderGameCopy> GetOrderGameCopies { get; set; }
+        public DbSet<OrderGameCopy> OrderGameCopies { get; set; }
         public DbSet<Production> Productions { get; set; }
         public DbSet<ProductionGamePlatform> ProductionGamePlatforms { get; set; }
         public DbSet<Role> Roles { get; set; }
