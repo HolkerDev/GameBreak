@@ -38,6 +38,13 @@ namespace GB.Data.Services
             return g;
         }
 
+        public Game UpdateGame(CreateGameDto game)
+        {
+            Game g = gameRepo.UpdateGame(game);
+            g.GameGenres = gameGenreService.UpdateGameGenres(game.GameGenres, g.ID); 
+            return g;
+        }
+
         public List<GameDto> GetAll()
         {
             List<GameDto> games = gameRepo.GetAll();

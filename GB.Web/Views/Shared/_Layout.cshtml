@@ -35,12 +35,13 @@
                     {
                         <li>@Html.ActionLink("Orders with Penalties", "GetOrdersWithPenalties", "A_Order")</li>
                         <li>@Html.ActionLink("Orders", "GetOrders", "A_Order")</li>
+                        <li>@Html.ActionLink("Add Game", "Add", "Game")</li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Log Out", "LogOut", "Account")</li>
                     }
-
+                        
                     </ul>
             </div>
         </div>

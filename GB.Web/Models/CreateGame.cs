@@ -44,8 +44,9 @@ namespace GB.Web.Models
         [DisplayName("Image")]
         public HttpPostedFileBase Image { get; set; }
 
+        public string ImageBase64 { get; set; }
+
         [DisplayName("GameGenres")]
-        [Required]
         public List<int> GameGenres { get; set; }
     }
 }
