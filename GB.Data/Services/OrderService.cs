@@ -17,9 +17,13 @@ namespace GB.Data.Services
     public class OrderService : IOrderService
     {
         private OrderRepository orderRepository;
-        public OrderService(OrderRepository orderRepository)
+        private OrderGameCopyRepository orderGameCopyRepository;
+        private GameCopyRepository gameCopyRepository;
+        public OrderService(OrderRepository orderRepository, GameCopyRepository gameCopyRepository, OrderGameCopyRepository orderGameCopyRepository)
         {
             this.orderRepository = orderRepository;
+            this.gameCopyRepository = gameCopyRepository;
+            this.orderGameCopyRepository = orderGameCopyRepository;
         }
 
         public Order AddOrder( OrderDto ord)
@@ -48,6 +52,17 @@ namespace GB.Data.Services
             return orderRepository.GetOrdersWithPenalties();
         }
 
-        
+        public bool FinishOrder(int ordID)
+        {
+            var orderID = orderRepository.FinishOrder(ordID);
+            if (orderID != 0)
+            {
+                List<int> orderGameCopies = orderGameCopyRepository.GetAllGameCopiesToReturn(orderID);
+                bool orderGameCopiesReturned = gameCopyRepository.ReturnGameCopies(orderGameCopies);
+                return orderGameCopiesReturned;
+            }
+            else
+                return false;
+        }
     }
 }

@@ -19,6 +19,8 @@
             <th>Total Price</th>
             <th>Total Price with Penalty</th>
             <th>Is Returned</th>
+            <th>Game Copies</th>
+            <th></th>
 
         </tr>
         @foreach (var order in Model)
@@ -39,7 +41,7 @@
                     }
                 </td>
                 <td>
-                    @if (order.ExpiresAt >= DateTime.Now)
+                    @if (order.ExpiresAt < DateTime.Now)
                     {
                         <span>@order.ExpiresAt.Subtract(order.CreatedAt).Days * 0.30</span>
                     }
@@ -49,7 +51,15 @@
                     }
                 </td>
                 <td>@order.TotalPrice</td>
-                <td>@order.TotalPrice+@order.ExpiresAt.Subtract(order.CreatedAt).Days * 0.30</td>
+                <td>
+                    @if (order.ExpiresAt < DateTime.Now)
+                    {
+                        <span>@order.TotalPrice+@order.ExpiresAt.Subtract(order.CreatedAt).Days * 0.30</span>
+                    }
+                    else {
+                        <span>@order.TotalPrice</span>
+                    }
+                            </td>
                 <td>
                     @if (order.IsFinishedAt != null)
                     {
@@ -59,6 +69,17 @@
                     {
                         <span>No</span>
                     }
+                </td>
+                <td>
+                    @foreach (var game in order.OrderGameCopies)
+                    {
+                        <span>@game.GameName, @game.LocationName</span><br />
+                    }
+                </td>
+                <td>
+                    <button id="btn_delete" class="label label-primary" data-slno="@order.ID" onclick="location.href='@Url.Action("FinishOrder","A_Order", new { orderID =  order.ID})'">
+                        Finish Order
+                    </button>
                 </td>
             </tr>
         }

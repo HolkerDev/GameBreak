@@ -30,5 +30,13 @@ namespace GB.Api.Controllers
         {
             return Json(orderService.GetOrdersWithPenalties());
         }
+
+
+        [Route("Post/FinishOrder")]
+        [HttpPost]
+        public IHttpActionResult FinishOrder([FromBody] int orderID)
+        {
+            return Json(orderService.FinishOrder(orderID));
+        }
     }
 }

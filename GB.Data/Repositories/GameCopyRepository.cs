@@ -32,5 +32,27 @@ namespace GB.Data.Repositories
                 throw ex;
             }
         }
+
+        public bool ReturnGameCopies(List<int> gameCopies)
+        {
+            try
+            {
+                foreach(int gameCopyID in gameCopies)
+                {
+                    GameCopy gameCopy = _dbContext.GameCopies.Where(g=>g.ID == gameCopyID).SingleOrDefault();
+                    if (gameCopy!= null)
+                    {
+                        gameCopy.UserID = null;
+                        gameCopy.GameCopyStatusID = 1;
+                        this.Update(gameCopy);
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

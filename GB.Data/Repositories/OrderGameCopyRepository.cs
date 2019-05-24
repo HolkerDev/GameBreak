@@ -48,5 +48,18 @@ namespace GB.Data.Repositories
                 throw ex;
             }
         }
+
+        public List<int> GetAllGameCopiesToReturn(int orderID)
+        {
+            try
+            {
+                List<int> gameCopies = _dbContext.OrderGameCopies.Where(g => g.OrderID == orderID).Select(g => g.GameCopyID).ToList();
+                return gameCopies;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

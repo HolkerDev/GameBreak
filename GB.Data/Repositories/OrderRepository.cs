@@ -188,6 +188,21 @@ namespace GB.Data.Repositories
                 throw ex;
             }
         }
+
+        public int FinishOrder(int orderID)
+        {
+            try
+            {
+                Order order = _dbContext.Orders.SingleOrDefault(o=>o.ID == orderID);
+                order.IsFinishedAt = DateTime.Now;
+                this.Update(order);
+                return order.ID;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
     
 }

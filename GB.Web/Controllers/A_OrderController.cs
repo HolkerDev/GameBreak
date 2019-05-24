@@ -26,6 +26,10 @@ namespace GB.Web.Controllers
             return View(data);
         }
 
-
+        public ActionResult FinishOrder(int orderID)
+        {
+            var result = new ApiClient().PostData<int>("api/a_order/Post/FinishOrder", orderID);
+            return RedirectToAction("Index");
+        }
     }
 }
