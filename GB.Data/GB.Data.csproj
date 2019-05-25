@@ -159,6 +159,10 @@
     <Compile Include="Migrations\201905231801233_Order_IsFinishedAt.Designer.cs">
       <DependentUpon>201905231801233_Order_IsFinishedAt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905250614127_FullName_toFirstLastName.cs" />
+    <Compile Include="Migrations\201905250614127_FullName_toFirstLastName.Designer.cs">
+      <DependentUpon>201905250614127_FullName_toFirstLastName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AgeRatingRepository.cs" />
@@ -213,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905231801233_Order_IsFinishedAt.resx">
       <DependentUpon>201905231801233_Order_IsFinishedAt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905250614127_FullName_toFirstLastName.resx">
+      <DependentUpon>201905250614127_FullName_toFirstLastName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

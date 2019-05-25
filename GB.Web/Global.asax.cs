@@ -31,7 +31,8 @@ namespace GB.Web
                 CustomSerializeModel userFromTicket = JsonConvert.DeserializeObject<CustomSerializeModel>(authTicket.UserData);
                 Context.User = Thread.CurrentPrincipal = new CustomPrincipal(User.Identity.Name) {
                     UserID = userFromTicket.UserID,
-                    FullName = userFromTicket.FullName,
+                    FirstName = userFromTicket.FirstName,
+                    LastName = userFromTicket.LastName,
                     Role = userFromTicket.Role
                 };
             }

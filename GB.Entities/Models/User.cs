@@ -22,7 +22,10 @@ namespace GB.Entities.Models
         public string Username { get; set; }
 
         [Required]
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
 
         [Required]
         public string Email { get; set; }
@@ -36,7 +39,6 @@ namespace GB.Entities.Models
         [MaxLength(50)]
         public string PhoneNumber { get; set; }
 
-        [ForeignKey(nameof(RoleID))]
         public virtual Role Role { get; set; }
 
         public virtual ICollection<GameCopy> GameCopies { get; set; } = new List<GameCopy>();

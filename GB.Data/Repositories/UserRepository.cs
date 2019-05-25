@@ -1,4 +1,5 @@
 ﻿using GB.Data.DAL;
+using GB.Data.Dto;
 using GB.Entities.Models;
 using GB.Entities.Repositories;
 using System;
@@ -6,8 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using GB.Data.Dto;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace GB.Data.Repositories
 {
@@ -18,13 +19,45 @@ namespace GB.Data.Repositories
 
         }
 
-        public User Get(int id)
+        public UserDto Get(int id)
         {
             try
             {
-                User user = _dbContext.Users.SingleOrDefault(x => x.ID == id);
-                if (user == null)
+                var query = _dbContext.Users
+                    .Include(u=>u.GameCopies).ThenInclude(gc=>gc.Location)
+                    .Include(u=>u.Orders)
+                    .Include(u=>u.Role)
+                    .Where(x => x.ID == id);
+                if (query == null)
                     throw new Exception("User not found");
+                UserDto user = query.Select(u=>new UserDto
+                {
+                    ID = u.ID,
+                    Username = u.Username,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    Password = u.Password,
+                    BirthDate = u.BirthDate,
+                    PhoneNumber = u.PhoneNumber,
+                    RoleID = u.RoleID,
+                    Role = u.Role.Name,
+                    GameCopies = u.GameCopies.Select(g=> new GameCopyDto {
+                        ID = g.ID,
+                        GameID = g.GameID,
+                        Game = new GameDto {
+                            ID = g.Game.ID,
+                            Name = g.Game.Name
+                        },
+                        GameCopyStatusID = g.GameCopyStatusID,
+                        UserID = g.UserID,
+                        LocationID = g.LocationID,
+                        Location = new LocationAvailableDto {
+                            ID = g.Location.ID,
+                            Name = g.Location.Name
+                        },
+                    }).ToList(),
+                }).SingleOrDefault();
                 return user;
             }
             catch (Exception ex)
@@ -44,7 +77,8 @@ namespace GB.Data.Repositories
                 {
                     BirthDate = user.BirthDate,
                     Email = user.Email,
-                    FullName = user.FullName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
                     Password = user.Password,
                     PhoneNumber = user.PhoneNumber,
                     Username = user.Username,
@@ -70,15 +104,38 @@ namespace GB.Data.Repositories
                 {
                     ID = u.ID,
                     Username = u.Username,
-                    FullName = u.FullName,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
                     Email = u.Email,
                     Password = u.Password,
                     BirthDate = u.BirthDate,
                     PhoneNumber = u.PhoneNumber,
                     RoleID = u.RoleID,
                     Role = u.Role.Name,
-                    GameCopies = u.GameCopies.ToList(),
-                    Orders = u.Orders.ToList()
+                    GameCopies = u.GameCopies.Select( g=> new GameCopyDto {
+                        ID = g.ID,
+                        GameID = g.GameID,
+                        GameCopyStatusID = g.GameCopyStatusID,
+                        UserID = g.UserID,
+                        LocationID = g.LocationID
+                    }).ToList(),
+                    Orders = u.Orders.Select(o => new OrderDto {
+                        ID = o.ID,
+                        OrderGameCopies = o.OrderGameCopies.Select(ogc => new OrderGameCopyDto
+                        {
+                            ID = ogc.ID,
+                            GameCopyID = ogc.GameCopyID,
+                            OrderID = ogc.OrderID,
+                            GameID = ogc.GameCopy.GameID,
+                            GameName = ogc.GameCopy.Game.Name,
+                            LocationID = ogc.GameCopy.LocationID,
+                            LocationName = ogc.GameCopy.Location.Name
+                    }).ToList(), 
+                        CreatedAt = o.CreatedAt,
+                        ExpiresAt = o.ExpiresAt,
+                        TotalPrice = o.TotalPrice,
+                        IsFinishedAt = o.IsFinishedAt
+                    }).ToList()
                 }).ToList();
 
                 return users;
@@ -108,7 +165,10 @@ namespace GB.Data.Repositories
         public User GetUserByUsername(string username)
         {
             User user = new User();
-            user = _dbContext.Users.Include(x=>x.Role).SingleOrDefault(x => x.Username == username);
+            var query = _dbContext.Users.Include(u=>u.Role).Where(u => u.Username == username);
+            user = query.SingleOrDefault();
+            var qrole = _dbContext.Roles.Include(r => r.Users).Where(r => r.ID == user.RoleID);
+            var role = qrole.SingleOrDefault();
             return user;
         }
 

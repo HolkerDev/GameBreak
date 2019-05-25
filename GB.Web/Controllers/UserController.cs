@@ -1,6 +1,7 @@
 ﻿using GB.Data.Dto;
 using GB.Data.Services;
 using GB.Entities.Models;
+using GB.Web.CustomAuthentication;
 using GB.Web.Logic;
 using GB.Web.Models;
 using GB.Web.ViewModels;
@@ -16,6 +17,7 @@ namespace GB.Web.Controllers
     {
 
         // GET: User
+        [CustomAuthorize(Roles="Administrator")]
         public ActionResult Index()
         {
             var data = new ApiClient().GetData<List<UserDto>>("api/user/GetAll");
@@ -23,6 +25,7 @@ namespace GB.Web.Controllers
             return View(data);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Add()
         {
@@ -31,6 +34,7 @@ namespace GB.Web.Controllers
             return View(user);
         }
 
+        [CustomAuthorize(Roles = "Client")]
         public ActionResult Edit(CreateUser user)
         {
             return View(user);
@@ -39,19 +43,21 @@ namespace GB.Web.Controllers
         [HttpPost]
         public ActionResult Add(CreateUser user)
         {
+            user.RoleID = 2;
             if (ModelState.IsValid)
             {
                 var result = new ApiClient().PostData<UserDto>("api/user/Post/Create", new UserDto()
                 {
                     Username = user.Username,
-                    FullName = user.FullName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
                     Email = user.Email,
                     Password = user.Password,
                     PhoneNumber = user.PhoneNumber,
                     RoleID = user.RoleID,
                     BirthDate = user.BirthDate
                 });
-                return RedirectToAction("Index");
+                return RedirectToAction("Login", "Account", new { area = "" });
             }
 
             return View(user);
