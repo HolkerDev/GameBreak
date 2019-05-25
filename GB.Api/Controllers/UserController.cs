@@ -21,9 +21,9 @@ namespace GB.Api.Controllers
 
         [Route("Get")]
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int userID)
         {
-            return Json(userService.Get(id));
+            return Json(userService.Get(userID));
         }
 
         [Route("GetAll")]

@@ -22,7 +22,8 @@ namespace GB.Web.Models
     public class CustomSerializeModel
     {
         public int UserID { get; set; }
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Role { get; set; }
     }
 }

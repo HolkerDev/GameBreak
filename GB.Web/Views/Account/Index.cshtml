@@ -1,7 +1,33 @@
-﻿
+﻿@model GB.Data.Dto.UserDto
 @{
+    /**/
+
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+<h2>@Model.ID</h2>
+<h2>@Model.Username</h2>
+<h2>@Model.FirstName</h2>
+<h2>@Model.LastName</h2>
+<h2>@Model.Email</h2>
+<h2>@Model.PhoneNumber</h2>
+@if (@Model.GameCopies != null)
+{
+    <h2>Game Copies borrowed - @Model.GameCopies.Count</h2>
+}
+else
+{
+    <h2>Game Copies borrowed - 0</h2>
+
+}
+@if (@Model.Orders != null)
+{
+    <h2>Orders - @Model.Orders.Count</h2>
+}
+else
+{
+    <h2>Orders - 0</h2>
+
+}

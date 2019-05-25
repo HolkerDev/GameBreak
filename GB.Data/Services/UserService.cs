@@ -12,7 +12,7 @@ namespace GB.Data.Services
 {
     public interface IUserService
     {
-        User Get(int id);
+        UserDto Get(int id);
         User AddUser(UserDto user);
         List<UserDto> GetAll();
         void Remove(int id);
@@ -28,9 +28,9 @@ namespace GB.Data.Services
             userRepo = userRepository;
         }
 
-        public User Get(int id)
+        public UserDto Get(int id)
         {
-            User user = userRepo.Get(id);
+            UserDto user = userRepo.Get(id);
             return user;
         }
 

@@ -17,9 +17,13 @@ namespace GB.Web.Models
         [MinLength(4)]
         public string Username { get; set; }
 
-        [DisplayName("Full Name")]
+        [DisplayName("First Name")]
         [Required]
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
+
+        [DisplayName("Last Name")]
+        [Required]
+        public string LastName { get; set; }
 
         [DisplayName("Email")]
         [Required]

@@ -16,9 +16,14 @@
                 @Html.ValidationMessageFor(x => x.Username, null, new { @class = "text=danger" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(x => x.FullName)
-                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.FullName, null, new { @class = "text=danger" })
+                @Html.LabelFor(x => x.FirstName)
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text=danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.LastName)
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text=danger" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.PhoneNumber)
@@ -32,7 +37,7 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.Password)
-                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type="password" })
                 @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text=danger" })
             </div>
             <div class="form-group">
@@ -40,28 +45,9 @@
                 @Html.TextBoxFor(x => x.BirthDate, new { @type = "date" })
                 @Html.ValidationMessageFor(x => x.BirthDate, null, new { @class = "text=danger" })
             </div>
-            <div class="form-group">
-                @Html.LabelFor(x => x.RoleID)
-                @Html.DropDownListFor(x => x.RoleID, Enumerable.Empty<SelectListItem>(), new { @id = "ddl-roles" })
-            </div>
 
             <button class="btn btn-primary pull-right" type="submit">Zapisz</button>
         }
     </div>
 </div>
 <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script>
-    var rolesSelect = $("#ddl-roles");
-
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:56946/api/role/GetAll",
-        success: function (data) {
-            console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                var option = new Option(data[i].Name, data[i].ID, false, false);
-                rolesSelect.append(option);
-            }
-        }
-    });
-</script>

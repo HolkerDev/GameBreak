@@ -23,13 +23,14 @@
                     <li>@Html.ActionLink("Games", "Index", "Game")</li>
                     @if (HttpContext.Current.User.IsInRole("Client"))
                     {
-                        <li>@Html.ActionLink("Profile", "Index", "Profile")</li>
+                        <li>@Html.ActionLink("Profile", "Index", "Account")</li>
                         <li>@Html.ActionLink("My Orders", "ViewUserOrders", "Order")</li>
                         <li> <a href="@Url.Action("UserCart", "Cart")"> <span class="glyphicon glyphicon-shopping-cart" style="color:antiquewhite"></span>Cart <span class="badge">@Session["count"]</span></a></li>
                     }
                     else if (HttpContext.Current.User.Identity.IsAuthenticated == false)
                     {
                         <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Register", "Add", "User")</li>
                     }
                     else if (HttpContext.Current.User.IsInRole("Administrator"))
                     {

@@ -1,4 +1,6 @@
-﻿using GB.Web.CustomAuthentication;
+﻿using GB.Data.Dto;
+using GB.Web.CustomAuthentication;
+using GB.Web.Logic;
 using GB.Web.Models;
 using Newtonsoft.Json;
 using System;
@@ -12,14 +14,19 @@ using System.Web.Security;
 
 namespace GB.Web.Controllers
 {
-    [AllowAnonymous]
+    
     public class AccountController : Controller
     {
+        [CustomAuthorize(Roles="Client")]
         public ActionResult Index()
         {
-            return View();
+            CustomPrincipal user = HttpContext.User as CustomPrincipal;
+
+            var data = new ApiClient().GetData<UserDto>("api/user/Get?userID=" + user.UserID);
+            return View(data);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Login(string ReturnUrl = "")
         {
@@ -45,7 +52,8 @@ namespace GB.Web.Controllers
                         CustomSerializeModel userModel = new Models.CustomSerializeModel()
                         {
                             UserID = user.UserID,
-                            FullName = user.FullName,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
                             Role = user.Role.RoleName
                         };
 
@@ -70,6 +78,7 @@ namespace GB.Web.Controllers
             ModelState.AddModelError("", "Username or Password invalid");
             return View(loginView);
         }
+
 
         public ActionResult LogOut()
         {

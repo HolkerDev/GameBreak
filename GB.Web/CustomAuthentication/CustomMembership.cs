@@ -103,7 +103,8 @@ namespace GB.Web.CustomAuthentication
                 },
                 UserID = user.ID,
                 Username = user.Username,
-                FullName = user.FullName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 RoleID = user.RoleID
             };
             return new CustomMembershipUser(membership);
