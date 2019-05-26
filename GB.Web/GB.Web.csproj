@@ -180,7 +180,6 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="CustomAuthentication\CustomAuthorizeAttribute.cs" />
     <Compile Include="CustomAuthentication\CustomMembership.cs" />
@@ -199,7 +198,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CreateUserVM.cs" />
     <Compile Include="ViewModels\NewOrderVM.cs" />
-    <Compile Include="ViewModels\RemoveCartVM.cs" />
     <Compile Include="ViewModels\CartVM.cs" />
     <Compile Include="ViewModels\ViewGameVM.cs" />
     <Compile Include="ViewModels\ViewOrdersVM.cs" />
