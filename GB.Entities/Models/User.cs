@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model User. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli User z bazy danych. 
+    */
     public class User
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

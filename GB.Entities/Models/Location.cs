@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model Location. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli Location z bazy danych. 
+    */
     public class Location
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -11,6 +11,10 @@ using System.Data.Entity;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium GameGenreRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli GameGenre.
+    */
     public class GameGenreRepository : DataRepository<GameGenre>, IGameGenreRepository
     {
         public GameGenreRepository(ApplicationContext db) : base(db)
@@ -18,6 +22,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium AddGameGenres. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy gatunków.
+        */
         public List<GameGenre> AddGameGenres(List<int> gameGenres, int gameID)
         {
             try

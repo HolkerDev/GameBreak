@@ -12,6 +12,10 @@ namespace GB.Data.Services
 
     }
 
+    //!  Serwis ProductionGamePlatformService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci ProductionGamePlatformRepository a  Api w postaci OrderGameCopyController.
+    */
     public class ProductionGamePlatformService : IProductionGamePlatformService
     {
         private ProductionGamePlatformRepository productionGamePlatformRepository;

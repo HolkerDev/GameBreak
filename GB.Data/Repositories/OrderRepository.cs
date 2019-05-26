@@ -11,6 +11,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium OrderRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli Order.
+    */
     public class OrderRepository : DataRepository<Order>, IOrderRepository
     {
         public OrderRepository(ApplicationContext db) : base(db)
@@ -18,6 +22,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium AddOrder. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu dodania nowego zamówienia w bazie danych.
+        */
         public Order AddOrder(OrderDto order)
         {
             try
@@ -39,6 +47,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium GetUserOrders. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy zamówień wybranego użytkownika.
+        */
         public List<OrderDto> GetUserOrders( int userID)
         {
             try
@@ -61,6 +73,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium Get. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania konkretnego zamówienia.
+        */
         public OrderDto Get( int orderID)
         {
             try
@@ -95,6 +111,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium GetAll. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy zamówień.
+        */
         public List<OrderDto> GetAll()
         {
             try
@@ -147,6 +167,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium GetOrdersWithPenalties. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy zaległych zamówień.
+        */
         public List<OrderDto> GetOrdersWithPenalties()
         {
             try
@@ -203,6 +227,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium FinishOrder. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu zamykania zrealizowanego zamówienia.
+        */
         public int FinishOrder(int orderID)
         {
             try

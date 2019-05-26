@@ -14,9 +14,16 @@ using System.Web.Security;
 
 namespace GB.Web.Controllers
 {
-    
+    //!  Mvc Controller AccountController. 
+    /*!
+       Klasa AccountController służy do przekazania danych do wyświetlenia na widokach oraz zarządzania kontem użytkownika.
+    */
     public class AccountController : Controller
     {
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia konta użytkownika na widoku \Account\Index, otrzymanego z warstwy Api.
+        */
         [CustomAuthorize(Roles="Client")]
         public ActionResult Index()
         {
@@ -26,6 +33,10 @@ namespace GB.Web.Controllers
             return View(data);
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia strony logowania na widoku \Account\Login.
+        */
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Login(string ReturnUrl = "")
@@ -39,6 +50,10 @@ namespace GB.Web.Controllers
             return View();
         }
 
+        //!  Akcja ActionResult typu HttpPost. 
+        /*!
+           Służy do przekazania danych do logowania z widoku \Account\Login do warstwy Api.
+        */
         [HttpPost]
         public ActionResult Login(LoginView loginView, string ReturnUrl = "")
         {
@@ -82,7 +97,10 @@ namespace GB.Web.Controllers
             return View(loginView);
         }
 
-
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wylogowania użytkownika na stronie.
+        */
         public ActionResult LogOut()
         {
             HttpCookie cookie = new HttpCookie("Cookie1", "");

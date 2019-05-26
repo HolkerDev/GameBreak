@@ -11,6 +11,10 @@ using System.Web.Mvc;
 
 namespace GB.Web.ViewModels
 {
+    //!  Klasa CreateUserVM. 
+    /*!
+       Klasa typu ViewModel, reprezentująca dane do wyświetlenia formularza dodania nowego użytkownika lub edytowania isntejącego, zawiera dane Użytkownika oraz dostępnych Roli.
+    */
     public class CreateUserVM
     {
         public CreateUser User { get; set; }

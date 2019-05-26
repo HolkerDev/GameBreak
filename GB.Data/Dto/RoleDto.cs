@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Dto
 {
+    //!  Klasa DTO Role. 
+    /*!
+       Klasa, która służy do transferu danych modelu Role pomiędzy warstwą MVC a Api.
+    */
     public class RoleDto
     {
         public int ID { get; set; }

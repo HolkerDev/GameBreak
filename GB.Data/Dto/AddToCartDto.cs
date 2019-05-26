@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Dto
 {
+    //!  Klasa DTO AddToCart. 
+    /*!
+       Klasa, która służy do transferu danych modelów User, Game oraz Location w ramach warstwy MVC projektu GB.Web.
+    */
     public class AddToCartDto
     {
         public int ID { get; set; }

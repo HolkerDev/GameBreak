@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Dto
 {
+    //!  Klasa DTO Production. 
+    /*!
+       Klasa, która służy do transferu danych modelu Production pomiędzy warstwą MVC a Api.
+    */
     public class ProductionDto
     {
         public int ID { get; set; }

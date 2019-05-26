@@ -13,6 +13,11 @@ namespace GB.Data.Services
 
     }
 
+    //!  Serwis GameCopyService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci GameCopyRepository a  Api w postaci GameCopyController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class GameCopyService : IGameCopyService
     {
         private GameCopyRepository gameCopyRepository;

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Dto
 {
+    //!  Klasa DTO AgeRating. 
+    /*!
+       Klasa, która służy do transferu danych modelu GameCopyStatus pomiędzy warstwą MVC a Api.
+    */
     public class GameCopyStatusDto
     {
         public int ID { get; set; }

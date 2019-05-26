@@ -13,6 +13,11 @@ namespace GB.Data.Services
 
     }
 
+    //!  Serwis ProductionService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci ProductionRepository a  Api w postaci ProductionController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class ProductionService : IProductionService
     {
         private readonly ProductionRepository productionRepo;

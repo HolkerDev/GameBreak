@@ -6,6 +6,10 @@ using System.Web;
 
 namespace GB.Web.ViewModels
 {
+    //!  Klasa CreateUserVM. 
+    /*!
+       Klasa typu ViewModel, reprezentująca dane formularza do dodania nowego zamówienia.
+    */
     public class NewOrderVM
     {
         public List<AddToCartDto> OrderGameCopies { get; set; }

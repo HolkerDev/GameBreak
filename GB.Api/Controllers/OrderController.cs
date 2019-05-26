@@ -9,6 +9,10 @@ using System.Web.Http;
 
 namespace GB.Api.Controllers
 {
+    //!  Api Controller OrderController. 
+    /*!
+       Klasa do opracowania przesłanych akcji HTTP w związku z działaniami na modelu Order.
+    */
     [RoutePrefix("api/order")]
     public class OrderController : ApiController
     {
@@ -16,6 +20,10 @@ namespace GB.Api.Controllers
         private OrderGameCopyService orderGameCopyService;
         private GameCopyService gameCopyService;
 
+        //! Konstruktor klasy OrderController. 
+        /*!
+          Konstruktor klasy OrderController, z inicjalizacją serwisu OrderService, OrderGameCopyService oraz GameCopyService.
+        */
         public OrderController(OrderService orderService, OrderGameCopyService orderGameCopyService, GameCopyService gameCopyService)
         {
             this.orderService = orderService;
@@ -23,6 +31,10 @@ namespace GB.Api.Controllers
             this.gameCopyService = gameCopyService;
         }
 
+        //!  Akcja Get. 
+        /*!
+          Akcja typu HttpGet, używająć metody serwisu OrderService zwraca zamówienie z ID, przekazanym jako parametr.
+        */
         [Route("Get")]
         [HttpGet]
         public IHttpActionResult Get(int orderID)
@@ -30,12 +42,10 @@ namespace GB.Api.Controllers
             return Json(orderService.Get(orderID));
         }
 
-        //[Route("GetAll")]
-        //[HttpGet]
-        //public IHttpActionResult GetAll()
-        //{
-        //    return Json(orderService.GetAll());
-        //}
+        //!  Akcja Create. 
+        /*!
+          Akcja typu HttpPost, używająć metody serwisu OrderService, OrderGameCopyService oraz GameCopyService, zapisuje nowe zamówienie oraz jego pozycje do bazy i zwraca wynik.
+        */
         [Route("Post/Create")]
         [HttpPost]
         public IHttpActionResult Create([FromBody] OrderDto ord)
@@ -46,6 +56,11 @@ namespace GB.Api.Controllers
             return Json(true);
         }
 
+
+        //!  Akcja GetUserOrders. 
+        /*!
+          Akcja typu HttpGet, używająć metody serwisu OrderService zwraca wszystkie zamówienia konkretnego użytkownika w systemie.
+        */
         [Route("GetUserOrders")]
         [HttpGet]
         public IHttpActionResult GetUserOrders(int userID)

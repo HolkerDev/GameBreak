@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace GB.Data.DAL
 {
+    //!  Klasa ApplicationContext. 
+    /*!
+       Kontekst bazy danych, zawiera obiekty, odpowiadające fizycznym obiektom bazy oraz służące do komunikacji z serwerem SQL.
+    */
     public class ApplicationContext: DbContext
     {
+        //!  Konstruktor klasy ApplicationContext. 
+        /*!
+ 
+        */
         public ApplicationContext() : base("ApplicationContext") {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
@@ -31,6 +39,10 @@ namespace GB.Data.DAL
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
 
+        //!  Metoda OnModelCreating. 
+        /*!
+           Metoda, która charakteryzuje działania, realizowane po tworzeniu bazy np. eliminowanie liczby mnogiej w nazwach relacji.
+        */
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

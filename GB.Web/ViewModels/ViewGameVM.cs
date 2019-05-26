@@ -7,6 +7,10 @@ using System.Web.Mvc;
 
 namespace GB.Web.ViewModels
 {
+    //!  Klasa ViewGameVM. 
+    /*!
+       Klasa typu ViewModel, reprezentująca dane do wyświetlenia wybranej gry.
+    */
     public class ViewGameVM
     {
         public GameDto Game { get; set; }

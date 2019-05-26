@@ -1,5 +1,9 @@
 ﻿namespace GB.Data.Dto
 {
+    //!  Klasa DTO OrderGameCopy. 
+    /*!
+       Klasa, która służy do transferu danych modelu OrderGameCopy pomiędzy warstwą MVC a Api.
+    */
     public class OrderGameCopyDto
     {
         public int ID { get; set; }

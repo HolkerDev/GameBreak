@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model GamePlatform. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli GamePlatform z bazy danych. 
+    */
     public class GamePlatform
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

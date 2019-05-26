@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium UserRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli User.
+    */
     public class UserRepository : DataRepository<User>, IUserRepository
     {
         public UserRepository(ApplicationContext db) : base(db)
@@ -19,6 +23,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium Get. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania konkretnego użytkownika.
+        */
         public UserDto Get(int id)
         {
             try
@@ -73,6 +81,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium AddUser. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu dodania nowego użytkownika w bazie danych.
+        */
         public User AddUser(UserDto user)
         {
             try
@@ -101,6 +113,10 @@ namespace GB.Data.Repositories
             
         }
 
+        //!  Metoda repozytorium GetAll. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy użytkowników.
+        */
         public List<UserDto> GetAll()
         {
             try
@@ -154,6 +170,10 @@ namespace GB.Data.Repositories
            
         }
 
+        //!  Metoda repozytorium Remove. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu usunięcia użytkownika z bazy danych.
+        */
         public void Remove(int id)
         {
             User u = _dbContext.Users.SingleOrDefault(x => x.ID == id);
@@ -162,6 +182,10 @@ namespace GB.Data.Repositories
             this.Delete(u);
         }
 
+        //!  Metoda repozytorium ValidateUser. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu walidacji użytkownika.
+        */
         public User ValidateUser(string username, string password)
         {
             User user = new User();
@@ -169,6 +193,10 @@ namespace GB.Data.Repositories
             return user;
         }
 
+        //!  Metoda repozytorium GetUserByUsername. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania użytkownika z wskazanym polem username.
+        */
         public User GetUserByUsername(string username)
         {
             User user = new User();
@@ -179,6 +207,10 @@ namespace GB.Data.Repositories
             return user;
         }
 
+        //!  Metoda repozytorium GetUserRolesByUsername. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy roli użytkownika.
+        */
         public string[] GetUserRolesByUsername(string username)
         {
             string[] roles = new string[] { };

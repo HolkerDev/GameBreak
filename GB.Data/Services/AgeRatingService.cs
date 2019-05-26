@@ -13,6 +13,11 @@ namespace GB.Data.Services
 
     }
 
+    //!  Serwis AgeRatingService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci AgeRatingRepository a  Api w postaci AgeRatingController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class AgeRatingService : IAgeRatingService
     {
         private AgeRatingRepository ageRatingRepo;

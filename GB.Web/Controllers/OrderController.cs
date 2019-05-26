@@ -10,9 +10,17 @@ using System.Web.Mvc;
 
 namespace GB.Web.Controllers
 {
+    //!  Mvc Controller OrderController. 
+    /*!
+       Klasa OrderController służy do przekierowania akcji Http na Api Controller oraz przekazania danych zamówień do wyświetlenia na widokach.
+    */
     [CustomAuthorize(Roles = "Client")]
     public class OrderController : Controller
     {
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia zawartości koszyka na widoku \Order\Checkout, otrzymanej z sesji użytkownika.
+        */
         [HttpGet]
         public ActionResult Checkout()
         {
@@ -22,6 +30,10 @@ namespace GB.Web.Controllers
             return View(vm);
         }
 
+        //!  Akcja ActionResult typu HttpPost. 
+        /*!
+           Służy do przekazania informacji o zamówieniu do warstwy Api.
+        */
         [HttpPost]
         public ActionResult Checkout(NewOrderVM vm)
         {
@@ -45,6 +57,10 @@ namespace GB.Web.Controllers
             return View();
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia listy zamówień użytkownika na widoku \Order\ViewUserOrders, otrzymanej z warstwy Api.
+        */
         [HttpGet]
         public ActionResult ViewUserOrders()
         {
@@ -54,6 +70,10 @@ namespace GB.Web.Controllers
             return View(vm);
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia danych wybranego zamówienia użytkownika na widoku \Order\Get, otrzymanych z warstwy Api.
+        */
         [HttpGet]
         public ActionResult Get(int orderID)
         {

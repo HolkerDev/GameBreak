@@ -11,6 +11,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium LocationRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli Location.
+    */
     public class LocationRepository : DataRepository<Location>, ILocationRepository
     {
         public LocationRepository(ApplicationContext db) : base(db)
@@ -18,6 +22,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium GetAvailableLocationsForGame. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy dostępnych lokalizacji dla wybranej gry.
+        */
         public List<LocationAvailableDto> GetAvailableLocationsForGame(int gameID)
         {
             try

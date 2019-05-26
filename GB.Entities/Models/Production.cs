@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model Production. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli Production z bazy danych. 
+    */
     public class Production
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

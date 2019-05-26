@@ -9,6 +9,10 @@ using System.Web;
 
 namespace GB.Web.Logic
 {
+    //!  Klasa ApiClient. 
+    /*!
+       Służy do konfiguracji komunikacji pomiędzy warstwą Api a MVC.
+    */
     public class ApiClient
     {
         readonly string baseurl = @"http://localhost:56946/";

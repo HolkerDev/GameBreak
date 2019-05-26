@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model GameCopyStatus. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli GameCopyStatus z bazy danych. 
+    */
     public class GameCopyStatus
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model Role. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli Role z bazy danych. 
+    */
     public class Role
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

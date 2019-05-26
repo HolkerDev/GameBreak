@@ -12,6 +12,12 @@ namespace GB.Data.Services
     {
         
     }
+
+    //!  Serwis GameGenreService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci GameGenreRepository a  Api w postaci GameGenreController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class GenreService : IGenreService
     {
         private readonly GenreRepository genreRepo;

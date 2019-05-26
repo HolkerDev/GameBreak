@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Dto
 {
+    //!  Klasa DTO User. 
+    /*!
+       Klasa, która służy do transferu danych modelu User pomiędzy warstwą MVC a Api.
+    */
     public class UserDto
     {
         public int ID { get; set; }

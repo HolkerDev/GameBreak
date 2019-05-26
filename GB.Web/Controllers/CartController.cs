@@ -9,10 +9,17 @@ using System.Web.Mvc;
 
 namespace GB.Web.Controllers
 {
+    //!  Mvc Controller CartController. 
+    /*!
+       Klasa CartController służy do przekazania danych do wyświetlenia na widokach oraz zarządzania koszykiem użytkownika.
+    */
     [CustomAuthorize(Roles = "Client")]
     public class CartController : Controller
     {
-        // GET: AddToCart  
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do dodania gry do koszyka zamówienia.
+        */
         [HttpPost]
         public ActionResult Add(ViewGameVM vm)
         {
@@ -57,6 +64,10 @@ namespace GB.Web.Controllers
             return RedirectToAction("Index", "Game");
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia koszyka użytkownika na widoku \Cart\UserCart, otrzymanego z sesji użytkownika.
+        */
         public ActionResult UserCart()
         {
 
@@ -64,6 +75,10 @@ namespace GB.Web.Controllers
 
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do usunięcia pozycji z koszyka zamówień.
+        */
         public ActionResult Remove(AddToCartDto cartItem)
         {
             List<AddToCartDto> cartItems = (List<AddToCartDto>)Session["cart"];
@@ -73,6 +88,10 @@ namespace GB.Web.Controllers
             return RedirectToAction("UserCart", "Cart");
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyczyszczenia koszyka zamówień użytkownika.
+        */
         public ActionResult ClearCart()
         {
             Session["cart"] = new List<AddToCartDto>();

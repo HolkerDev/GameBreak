@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium OrderGameCopyRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli OrderGameCopy.
+    */
     public class OrderGameCopyRepository : DataRepository<OrderGameCopy>, IOrderGameCopyRepository
     {
         public OrderGameCopyRepository(ApplicationContext db) : base(db)
@@ -17,6 +21,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium AddOrderGameCopies. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu dodania do bazy danych listy pozycji wybranego zamówienia.
+        */
         public List<GameCopy> AddOrderGameCopies( Order order, List<OrderGameCopyDto> orderGameCopies)
         {
             try
@@ -49,6 +57,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium GetAllGameCopiesToReturn. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania wszystkich pozycji zamówienia do oddania.
+        */
         public List<int> GetAllGameCopiesToReturn(int orderID)
         {
             try

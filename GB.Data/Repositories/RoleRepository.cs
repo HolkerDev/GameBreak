@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium RoleRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli Role.
+    */
     public class RoleRepository : DataRepository<Role>, IRoleRepository
     {
         public RoleRepository(ApplicationContext db) : base(db)
@@ -17,6 +21,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium GetAll. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy roli.
+        */
         public List<RoleDto> GetAll()
         {
             try

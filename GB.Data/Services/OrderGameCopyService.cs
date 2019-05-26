@@ -14,6 +14,11 @@ namespace GB.Data.Services
 
     }
 
+    //!  Serwis OrderGameCopyService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci OrderGameCopyRepository a  Api w postaci OrderGameCopyController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class OrderGameCopyService : IOrderGameCopyService
     {
         private OrderGameCopyRepository orderGameCopyRepository;

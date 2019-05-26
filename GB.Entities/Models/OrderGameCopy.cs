@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model OrderGameCopy. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli OrderGameCopy z bazy danych. 
+    */
     public class OrderGameCopy
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

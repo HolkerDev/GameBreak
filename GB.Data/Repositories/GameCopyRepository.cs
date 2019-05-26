@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium GameCopyRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli GameCopy.
+    */
     public class GameCopyRepository : DataRepository<GameCopy>, IGameCopyRepository
     {
         public GameCopyRepository(ApplicationContext db) : base(db)
@@ -16,6 +20,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium UpdateGameCopies. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu zapisania zmian w egzemplarzach gier.
+        */
         public bool UpdateGameCopies(List<GameCopy> gameCopies, int userID)
         {
             try
@@ -33,6 +41,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium ReturnGameCopies. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu zapisania zmian w egzemplarzach gier w wyniku zwrotu zamówienia.
+        */
         public bool ReturnGameCopies(List<int> gameCopies)
         {
             try

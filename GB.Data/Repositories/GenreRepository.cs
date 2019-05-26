@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium GenreRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli Genre.
+    */
     public class GenreRepository : DataRepository<Genre>, IGenreRepository
     {
         public GenreRepository(ApplicationContext db) : base(db)
@@ -17,6 +21,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium GetAll. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy gatunków.
+        */
         public List<GenreDto> GetAll()
         {
             try

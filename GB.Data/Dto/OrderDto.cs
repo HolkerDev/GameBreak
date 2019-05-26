@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Dto
 {
+    //!  Klasa DTO Order. 
+    /*!
+       Klasa, która służy do transferu danych modelu Order pomiędzy warstwą MVC a Api.
+    */
     public class OrderDto
     {
         public int ID { get; set; }

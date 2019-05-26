@@ -11,6 +11,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium GameRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli Game.
+    */
     public class GameRepository : DataRepository<Game>, IGameRepository
     {
         public GameRepository(ApplicationContext db) : base(db)
@@ -18,6 +22,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium Get. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania konkretnej gry.
+        */
         public GameDto Get(int id)
         {
             try
@@ -87,6 +95,10 @@ namespace GB.Data.Repositories
             }
         }
 
+        //!  Metoda repozytorium AddGame. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu dodania nowej gry w bazie danych.
+        */
         public Game AddGame(CreateGameDto game)
         {
             try
@@ -117,6 +129,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium UpdateGame. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu zapisania zmian do danych gry.
+        */
         public Game UpdateGame(CreateGameDto game)
         {
             try
@@ -143,6 +159,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium GetAll. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy gier.
+        */
         public List<GameDto> GetAll()
         {
             try
@@ -190,6 +210,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium Remove. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu usunięcia gry z bazy.
+        */
         public void Remove(int id)
         {
             Game g = _dbContext.Games.SingleOrDefault(x => x.ID == id);

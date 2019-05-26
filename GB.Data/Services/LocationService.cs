@@ -12,6 +12,11 @@ namespace GB.Data.Services
     {
     }
 
+    //!  Serwis LocationService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci LocationRepository a  Api w postaci LocationController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class LocationService : ILocationService
     {
         private readonly LocationRepository locationRepo;

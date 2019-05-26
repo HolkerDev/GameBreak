@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model Cart. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli Cart z bazy danych. 
+    */
     public class Cart
     {
         [Key]

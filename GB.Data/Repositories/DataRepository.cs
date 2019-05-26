@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium DataRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla podstawowych działan Add, Update, Delete oraz SaveChanges.
+    */
     public class DataRepository<T> : IDataRepository<T> where T : class
     {
         protected readonly ApplicationContext _dbContext;

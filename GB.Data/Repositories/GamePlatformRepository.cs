@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium GamePlatformRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli GamePlatform.
+    */
     public class GamePlatformRepository : DataRepository<GamePlatform>, IGamePlatformRepository
     {
         public GamePlatformRepository(ApplicationContext db) : base(db)
@@ -17,6 +21,10 @@ namespace GB.Data.Repositories
 
         }
 
+        //!  Metoda repozytorium GetAll. 
+        /*!
+           Zawiera elementy logiki dostępu do danych w celu pobrania listy platform.
+        */
         public List<GamePlatformDto> GetAll()
         {
             try

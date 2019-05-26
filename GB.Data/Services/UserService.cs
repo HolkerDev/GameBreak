@@ -18,6 +18,11 @@ namespace GB.Data.Services
         void Remove(int id);
     }
 
+    //!  Serwis UserService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci UserRepository a  Api w postaci UserController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class UserService : IUserService
     {
 

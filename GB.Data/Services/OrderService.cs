@@ -14,6 +14,11 @@ namespace GB.Data.Services
 
     }
 
+    //!  Serwis OrderService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci OrderRepository a  Api w postaci OrderController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class OrderService : IOrderService
     {
         private OrderRepository orderRepository;

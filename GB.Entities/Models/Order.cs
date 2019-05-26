@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model Order. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli Order z bazy danych. 
+    */
     public class Order
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

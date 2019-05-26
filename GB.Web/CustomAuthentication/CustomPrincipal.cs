@@ -6,6 +6,10 @@ using System.Web;
 
 namespace GB.Web.CustomAuthentication
 {
+    //!  Klasa CustomPrincipal. 
+    /*!
+       Realizuje interfejs IPrincipal oraz metody IsInRole i konstruktor z parametrem username.
+    */
     public class CustomPrincipal : IPrincipal
     {
         public int UserID { get; set; }

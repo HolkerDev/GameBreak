@@ -6,6 +6,10 @@ using System.Web.Mvc;
 
 namespace GB.Web.CustomAuthentication
 {
+    //!  Klasa CustomAuthorizeAttribute. 
+    /*!
+       Służy do zarzązania autoryzowanymi żądaniami.
+    */
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
         protected virtual CustomPrincipal CurrentUser

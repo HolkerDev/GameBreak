@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Dto
 {
+    //!  Klasa DTO CreateGame. 
+    /*!
+       Klasa, która służy do transferu danych, niezbędnych do tworzenia modelu Game pomiędzy warstwą MVC a Api.
+    */
     public class CreateGameDto
     {
         public int ID { get; set; }

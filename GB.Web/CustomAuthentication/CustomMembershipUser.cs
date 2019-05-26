@@ -8,6 +8,10 @@ using System.Web.Security;
 
 namespace GB.Web.CustomAuthentication
 {
+    //!  Klasa CustomMembershipUser. 
+    /*!
+       Realizuje klasę abstrakcyjną MembershipUser.
+    */
     public class CustomMembershipUser : MembershipUser
     {
         public int UserID { get; set; }

@@ -13,6 +13,11 @@ namespace GB.Data.Services
         
     }
 
+    //!  Serwis GamePlatformService. 
+    /*!
+       Serwis, który występuje elementem pośrednim pomiędzy warstwą logiki dostępu do bazy danych w postaci GamePlatformRepository a  Api w postaci GamePlatformController.
+       Wszystkie metody służą do komunikacji jednej warstwy z drugą oraz transferu danych pomiędzy nimi. 
+    */
     public class GamePlatformService : IGamePlatformService
     {
         private readonly GamePlatformRepository gamePlatformRepo;

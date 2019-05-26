@@ -8,6 +8,10 @@ using System.Web;
 
 namespace GB.Web.Models
 {
+    //!  Klasa CreateUser. 
+    /*!
+       Klasa, reprezentująca dane do dodania lub edytowania nowego uzytkownika na widoku.
+    */
     public class CreateUser
     {
         public int ID { get; set; }

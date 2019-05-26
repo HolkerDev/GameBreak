@@ -7,6 +7,10 @@ using System.Web;
 
 namespace GB.Web.DataAccess
 {
+    //!  Klasa DAUser. 
+    /*!
+       Zawiera dane, niezbędne do identyfikacji użytkownika przy walidacji oraz autoryzacji jego danych.
+    */
     public class DAUser
     {
         public int UserID { get; set; }

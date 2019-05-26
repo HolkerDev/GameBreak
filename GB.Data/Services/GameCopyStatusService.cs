@@ -11,6 +11,10 @@ namespace GB.Data.Services
 
     }
 
+    //!  Serwis GameCopyService. 
+    /*!
+
+    */
     public class GameCopyStatusService : IGameCopyStatusService
     {
     }

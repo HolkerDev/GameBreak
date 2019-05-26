@@ -10,6 +10,10 @@ using GB.Entities.Models;
 
 namespace GB.Web.Models
 {
+    //!  Klasa CreateGame. 
+    /*!
+       Klasa, reprezentująca dane do dodania lub edytowania nowej gry na widoku.
+    */
     public class CreateGame
     {
         public int ID { get; set; }

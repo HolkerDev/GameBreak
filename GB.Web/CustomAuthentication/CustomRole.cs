@@ -8,6 +8,10 @@ using System.Web.Security;
 
 namespace GB.Web.CustomAuthentication
 {
+    //!  Klasa CustomRole. 
+    /*!
+       Realizuje klasę abstrakcyjną RoleProvider i służy do implementacji roli do autoryzacji CustomRole.
+    */
     public class CustomRole : RoleProvider
     {
         private UserRepository userRepository;

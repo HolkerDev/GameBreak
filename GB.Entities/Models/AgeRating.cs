@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GB.Entities.Models
 {
+    //!  Model AgeRating. 
+    /*!
+      Atrybuty klasy reprezentują pola oraz relacje tabeli AgeRating z bazy danych. 
+    */
     public class AgeRating
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

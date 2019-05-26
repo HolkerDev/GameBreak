@@ -13,16 +13,27 @@ using System.Web.Mvc;
 
 namespace GB.Web.Controllers
 {
-    
+
+    //!  Mvc Controller GameController. 
+    /*!
+       Klasa GameController służy do przekierowania akcji Http na Api Controller oraz przekazania danych gier do wyświetlenia na widokach.
+    */
     public class GameController : Controller
     {
-
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia listy gier na widoku \Game\Index, otrzymanej z warstwy Api.
+        */
         public ActionResult Index()
         {
             var data = new ApiClient().GetData<List<GameDto>>("api/game/GetAll");
             return View(data);
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia formularza do dodania nowej gry na widoku \Game\Add.
+        */
         [CustomAuthorize(Roles = "Administrator")]
         [HttpGet]
         public ActionResult Add()
@@ -32,6 +43,10 @@ namespace GB.Web.Controllers
             return View(game);
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia formularza do edytowania isniejącej gry na widoku \Game\Edit.
+        */
         [CustomAuthorize(Roles = "Administrator")]
         [HttpGet]
         public ActionResult Edit(int gameID)
@@ -54,6 +69,10 @@ namespace GB.Web.Controllers
             return View(game);
         }
 
+        //!  Akcja ActionResult typu HttpPost. 
+        /*!
+           Służy do przekazania danych z formularza do edytowania isniejącej gry na widoku \Game\Edit do warstwy Api.
+        */
         [CustomAuthorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Edit(CreateGame game)
@@ -89,8 +108,10 @@ namespace GB.Web.Controllers
             return View(game);
         }
 
-
-
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia danych wybranej gry na widoku \Game\ViewGame, otrzymanych z warstwy Api.
+        */
         [AllowAnonymous]
         public ActionResult ViewGame(int gameID)
         {
@@ -100,6 +121,10 @@ namespace GB.Web.Controllers
             return View(vm);
         }
 
+        //!  Akcja ActionResult typu HttpPost. 
+        /*!
+           Służy do przekazania danych z formularza do dodania nowej gry na widoku \Game\Add do warstwy Api.
+        */
         [CustomAuthorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Add(CreateGame game)
@@ -131,6 +156,10 @@ namespace GB.Web.Controllers
             return View(game);
         }
 
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do usunięcia wybranej gry.
+        */
         [CustomAuthorize(Roles = "Administrator")]
         public ActionResult Remove(int id)
         {

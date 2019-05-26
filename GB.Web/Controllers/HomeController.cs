@@ -6,26 +6,19 @@ using System.Web.Mvc;
 
 namespace GB.Web.Controllers
 {
+    //!  Mvc Controller HomeController. 
+    /*!
+        Klasa HomeController służy do przekierowania akcji Http na Api Controller oraz przekazania danych do wyświetlenia na widokach.
+    */
     public class HomeController : Controller
     {
-
+        //!  Akcja ActionResult typu HttpGet. 
+        /*!
+           Służy do wyświetlenia strony głównej na widoku \Home\Index.
+        */
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        } 
     }
 }

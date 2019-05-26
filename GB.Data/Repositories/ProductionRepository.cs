@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace GB.Data.Repositories
 {
+    //!  Repozytorium ProductionRepository. 
+    /*!
+       Klasa, która zawiera wszystkie elementy logiki dostępu do danych dla tabeli Production.
+    */
     public class ProductionRepository : DataRepository<Production>, IProductionRepository
     {
         public ProductionRepository(ApplicationContext db) : base(db)

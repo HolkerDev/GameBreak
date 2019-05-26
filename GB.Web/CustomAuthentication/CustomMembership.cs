@@ -10,6 +10,10 @@ using System.Web.Security;
 
 namespace GB.Web.CustomAuthentication
 {
+    //!  Klasa CustomMembership. 
+    /*!
+       Realizuje klasę abstrakcyjną MembershipProvider oraz służy do pobierania potocznego użytkownika oraz jego walidacji.
+    */
     public class CustomMembership : MembershipProvider
     {
         private UserRepository userRepository;

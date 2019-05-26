@@ -6,6 +6,10 @@ using System.Web;
 
 namespace GB.Web.Models
 {
+    //!  Klasa LoginView. 
+    /*!
+       Klasa, reprezentująca dane do logowania na widoku.
+    */
     public class LoginView
     {
         [Required]
