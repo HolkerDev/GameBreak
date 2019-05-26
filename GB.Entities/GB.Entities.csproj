@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Models\AgeRating.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Game.cs" />
