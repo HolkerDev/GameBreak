@@ -57,6 +57,13 @@ namespace GB.Data.Repositories
                             Name = g.Location.Name
                         },
                     }).ToList(),
+                    Orders = u.Orders.Select(o => new OrderDto {
+                        ID = o.ID,
+                        CreatedAt = o.CreatedAt,
+                        ExpiresAt = o.ExpiresAt,
+                        IsFinishedAt = o.IsFinishedAt,
+                        TotalPrice = o.TotalPrice
+                    }).ToList()
                 }).SingleOrDefault();
                 return user;
             }

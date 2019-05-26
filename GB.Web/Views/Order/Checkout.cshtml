@@ -1,31 +1,39 @@
 ﻿@model GB.Web.ViewModels.NewOrderVM
-@using (var form = Html.BeginForm("Checkout", "Order", FormMethod.Post))
-{
-    for (int i = 0; i < Model.OrderGameCopies.Count(); i++)
-    {
-        @Html.HiddenFor(o => o.OrderGameCopies[i].GameID)
-        @Html.HiddenFor(o => o.OrderGameCopies[i].LocationID)
-    }
-    @Html.HiddenFor(o=>o.TotalPrice)
-    <table class="table table-striped table-hover table-responsive">
-        <thead>
-            <tr>
-                <th>Game Name</th>
-                <th>Location </th>
-                <th>Price</th>
-                <th></th>
-            </tr>
-            @foreach (var cartItem in Model.OrderGameCopies)
-            {
-                <tr>
-                    <td>@cartItem.GameName</td>
-                    <td>@cartItem.LocationName</td>
-                    <td>@cartItem.Price</td>
-                </tr>
-            }
-        </thead>
-    </table>
-    <h4>Total price:</h4><h5>@Model.TotalPrice</h5>
-    <button type="submit" value="Submit Order" ></button>
+@{
+    ViewBag.Title = "Checkout Order";
 }
+<div class="col-md-1"></div>
+<div class="col-md-10 user-cart">
+    <h4 class="title">Please check your information carefully before submitting.</h4>
+    @using (var form = Html.BeginForm("Checkout", "Order", FormMethod.Post))
+    {
+        for (int i = 0; i < Model.OrderGameCopies.Count(); i++)
+        {
+            @Html.HiddenFor(o => o.OrderGameCopies[i].GameID)
+            @Html.HiddenFor(o => o.OrderGameCopies[i].LocationID)
+        }
+        @Html.HiddenFor(o => o.TotalPrice)
+        <table class="table table-responsive table-borderless">
+            <thead>
+                <tr>
+                    <th>Game Name</th>
+                    <th>Location </th>
+                    <th>Price</th>
+                </tr>
+                @foreach (var cartItem in Model.OrderGameCopies)
+                {
+                    <tr>
+                        <td>@cartItem.GameName</td>
+                        <td>@cartItem.LocationName</td>
+                        <td>@cartItem.Price zł</td>
+                    </tr>
+                }
+            </thead>
+        </table>
+        <h3 class="title">Total price: @Model.TotalPrice zł</h3>
+        <button type="submit" class="btn btn-primary add">Submit Order</button>
+    }
+</div>
+<div class="col-md-1"></div>
+   
 

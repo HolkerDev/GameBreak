@@ -1,96 +1,99 @@
 ﻿@model GB.Web.ViewModels.ViewGameVM
 @{
-    ViewBag.Title = "ViewGame";
+    ViewBag.Title = Model.Game.Name;
 }
-
-<h2>ViewGame</h2>
-
-
-<table class="table table-striped table-hover table-responsive">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Release Date</th>
-            <th>Production</th>
-            <th>Game Platform</th>
-            <th>Age Rating</th>
-            <th>Genres</th>
-            <th>Price</th>
-            <th>Description</th>
-        </tr>
-
-        <tr>
-            <td>
-                @if (Model.Game.Image != null)
-                {<img src="data:image;base64,@System.Convert.ToBase64String(Model.Game.Image)" width="80" height="80" />}
-            </td>
-            <td>@Model.Game.Name</td>
-            <td>@Model.Game.ReleaseDate.ToShortDateString()</td>
-            <td>@Model.Game.Production.Name</td>
-            <td>@Model.Game.GamePlatform.Name</td>
-            <td>@Model.Game.AgeRating.Name</td>
-            <td>
-                @foreach (var gameGenre in Model.Game.GameGenres)
-                {
-                    <span>@gameGenre.GenreName</span>
-                }
-            </td>
-            <td>@Model.Game.Price</td>
-            <td>@Model.Game.Description</td>
-        </tr>
-
-    </thead>
-</table>
-@if (HttpContext.Current.User.IsInRole("Administrator"))
-{
-    <button type="button" class="btn btn-primary" id="btn_delete" data-slno="@Model.Game.ID" onclick="location.href='@Url.Action("Edit","Game", new { gameID =  Model.Game.ID})'">
-        Edit Game
-    </button>
-}
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#locationModal">
-    Add To Cart
-</button>
-
+<div class="game-content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12" style="text-align:center">
+                    <h1 class="game-title">@Model.Game.Name</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="game-info-title">Production: </h4><h5 class="game-info-item">@Model.Game.Production.Name</h5>
+                    <h4 class="game-info-title">Release Date: </h4><h5 class="game-info-item">@Model.Game.ReleaseDate.ToShortDateString()</h5>
+                    <h4 class="game-info-title">Game Platform: </h4><h5 class="game-info-item">@Model.Game.GamePlatform.Name</h5>
+                    <h4 class="game-info-title">Age Rating: </h4><h5 class="game-info-item">@Model.Game.AgeRating.Name</h5>
+                    <h4 class="game-info-title">Game Genres: </h4>
+                    <h5 class="game-info-item">
+                        @foreach (var gameGenre in Model.Game.GameGenres)
+                        {
+                            if (gameGenre.ID != Model.Game.GameGenres.Last().ID)
+                            {
+                                @gameGenre.GenreName<span>, </span>
+                            }
+                            else
+                            {
+                                @gameGenre.GenreName
+                            }
+                        }
+                    </h5>
+                </div>
+                <div class="col-md-6" style="text-align:center">
+                    <h3 style="font-style:oblique">@Model.Game.Price zł</h3>
+                    @if (HttpContext.Current.User.IsInRole("Administrator"))
+                    {
+                        <button type="button" class="btn btn-primary edit" data-slno="@Model.Game.ID" onclick="location.href='@Url.Action("Edit","Game", new { gameID =  Model.Game.ID})'" style="margin-bottom:10px!important;">Edit Game</button>
+                    }
+                    else if(HttpContext.Current.User.IsInRole("Client")){
+                        <button type="button" class="btn add" data-toggle="modal" data-target="#locationModal" style="margin-bottom:10px!important;"> Add To Cart <span class="glyphicon glyphicon-shopping-cart" style="color:ivory"></span></button>
+                    }
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+            @if (Model.Game.Image != null)
+            {<img src="data:image;base64,@System.Convert.ToBase64String(Model.Game.Image)" width="400" height="400" />}
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px!important;">
+        <div class="col-md-12" id="desc">
+            <h5 class="game-info-title" >Descripton: </h5>
+            <h5 style="padding: 8px !important; border-radius: 10px !important;margin: 4px !important;">@Model.Game.Description</h5>
+        </div>
+    </div>
+</div>
 
 <!-- Modal -->
-<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Game "@Model.Game.Name" to cart</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <h3  style="color:white!important">&times;</h3>
                 </button>
+                <h1 style="font-family: 'Pontano Sans', sans-serif;">Add game to cart</h1>
             </div>
             <div class="modal-body">
+                <h4 class="game-info-title"> Choose location from list to pick up your game.</h4>
                 @using (var form = Html.BeginForm("Add", "Cart", FormMethod.Post))
                 {
                     @Html.HiddenFor(g => g.Game.ID)
-                    @Html.HiddenFor(g =>g.Game.Name)
+                    @Html.HiddenFor(g => g.Game.Name)
                     @Html.HiddenFor(g => g.Game.Price)
                     for (int i = 0; i < Model.Game.LocationsWithGameCopiesAvailable.Count(); i++)
                     {
-                         @Html.HiddenFor(g => g.Game.LocationsWithGameCopiesAvailable[i].ID)
-                         @Html.HiddenFor(g => g.Game.LocationsWithGameCopiesAvailable[i].Name)
+                        @Html.HiddenFor(g => g.Game.LocationsWithGameCopiesAvailable[i].ID)
+                        @Html.HiddenFor(g => g.Game.LocationsWithGameCopiesAvailable[i].Name)
                     }
-
 
                     <div class="form-group col-md-12">
                         @Html.DropDownListFor(x => x.Game.LocationChosenID, Model.LocationsSelect, new { @id = "locationSelect", @class = "form-control" })
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-shopping-cart "></span>Add To Cart
+                        <button type="submit" class="btn add">
+                            Add To Cart
                         </button>
                     </div>
                 }
             </div>
-            
 
-            </div>
+
+        </div>
     </div>
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script>

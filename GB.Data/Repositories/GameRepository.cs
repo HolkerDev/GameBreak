@@ -177,7 +177,8 @@ namespace GB.Data.Repositories
                         GenreID = gg.GenreID,
                         GameName = gg.Game.Name,
                         GenreName = gg.Genre.Name
-                    }).ToList()
+                    }).ToList(),
+                    Image = g.Image
                 }).ToList();
 
                 return games;

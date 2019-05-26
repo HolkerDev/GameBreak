@@ -254,12 +254,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\ViewOne.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\AddEditPartial.cshtml" />
     <Content Include="Views\User\Add.cshtml" />
@@ -276,6 +273,7 @@
     <Content Include="Views\Order\Get.cshtml" />
     <Content Include="Views\A_Order\GetOrders.cshtml" />
     <Content Include="Views\A_Order\GetOrdersWithPenalties.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

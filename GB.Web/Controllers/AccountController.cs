@@ -32,7 +32,7 @@ namespace GB.Web.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return LogOut();
+                return RedirectToAction("Index");
             }
 
             ViewBag.ReturnUrl = ReturnUrl;
@@ -71,7 +71,10 @@ namespace GB.Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index");
+                        if(user.Role.RoleName=="Client")
+                            return RedirectToAction("Index");
+                        else if(user.Role.RoleName == "Administrator")
+                            return RedirectToAction("GetOrders", "A_Order", new { area = ""});
                     }
                 }
             }

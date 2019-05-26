@@ -29,6 +29,8 @@ namespace GB.Web.Controllers
         [HttpGet]
         public ActionResult Add()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index","Account", new { area = ""});
             CreateUser user = new CreateUser();
 
             return View(user);

@@ -46,7 +46,7 @@ namespace GB.Web.Models
 
         public string ImageBase64 { get; set; }
 
-        [DisplayName("GameGenres")]
+        [DisplayName("Game Genres")]
         public List<int> GameGenres { get; set; }
     }
 }

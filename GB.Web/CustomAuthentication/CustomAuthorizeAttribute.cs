@@ -32,11 +32,7 @@ namespace GB.Web.CustomAuthentication
             else
             {
                 routeData = new RedirectToRouteResult
-                (new System.Web.Routing.RouteValueDictionary
-                (new
-                {
-                    controller = "Error",
-                    action = "AccessDenied"
+                (new System.Web.Routing.RouteValueDictionary(new{controller = "Error",action = "Index"
                 }));
             }
             filterContext.Result = routeData;

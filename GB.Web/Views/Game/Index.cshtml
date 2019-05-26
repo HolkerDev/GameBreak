@@ -1,43 +1,50 @@
 ﻿@using GB.Data.Dto
 @model List<GameDto>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Games";
 }
 
-<h2>Index</h2>
-
-<br />
-<table class="table table-striped table-hover table-responsive">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Release Date</th>
-            <th>Production</th>
-            <th>Game Platform</th>
-            <th>Age Rating</th>
-            <th>Genres</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
+<div class="content">
+    <div class="row">
+        <h2 class="title">@Model.Count items found.</h2>
+    </div>
+    <div class="row">
         @foreach (var game in Model)
         {
-            <tr>
-                <td><a href="@Url.Action("ViewGame","Game",new { gameID =game.ID})">@game.Name</a></td>
-                <td>@game.ReleaseDate.ToShortDateString()</td>
-                <td>@game.Production.Name</td>
-                <td>@game.GamePlatform.Name</td>
-                <td>@game.AgeRating.Name</td>
-                <td>@foreach (var gameGenre in game.GameGenres) {
-                    <span>@gameGenre.GenreName</span>
-                }</td>
-                <td>@game.Price</td>
-                <td>@game.Description</td>
-                <td>@if (HttpContext.Current.User.IsInRole("Administrator"))
-                {
+            <div class="col-md-4" id="games-item">
+                <div class="row">
+                    <div class="col-12">
+                        @if (game.Image != null)
+                        {<img src="data:image;base64,@System.Convert.ToBase64String(game.Image)" width="200" height="200" />}
+                    </div><br />
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="game-name"><a href="@Url.Action("ViewGame", "Game", new { gameID = game.ID })">@game.Name</a></h4>
+                        <h5>@game.Production.Name, @game.GamePlatform.Name</h5>
+                        <h5>
+                            @foreach (var gameGenre in game.GameGenres)
+                            {
+                                if (gameGenre.ID != game.GameGenres.Last().ID)
+                                {
+                                    <span>@gameGenre.GenreName, </span>
+                                }
+                                else
+                                {
+                                    <span>@gameGenre.GenreName</span>
+                                }
+                            }
+                        </h5><br />
+                        <span class="game-price">@game.Price zł</span>
+                    </div>
+                </div>
+            </div>
 
-                }</td>
-            </tr>
+            if (HttpContext.Current.User.IsInRole("Administrator"))
+            {
+
+            }
         }
-    </thead>
-</table>
+    </div>
+</div>
+

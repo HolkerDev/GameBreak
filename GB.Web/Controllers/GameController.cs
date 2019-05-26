@@ -16,7 +16,7 @@ namespace GB.Web.Controllers
     
     public class GameController : Controller
     {
-        [AllowAnonymous]
+
         public ActionResult Index()
         {
             var data = new ApiClient().GetData<List<GameDto>>("api/game/GetAll");

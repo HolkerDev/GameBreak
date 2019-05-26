@@ -1,33 +1,42 @@
 ﻿@model GB.Data.Dto.UserDto
 @{
-    /**/
-
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Profile";
 }
+    <div class="col-md-1"></div>
+    <div class="profile-content col-md-4 col-xs-12">
+        <h2 class="title">Profile</h2>
+        <div style="background-color:#d9abf3; display:inline-block; margin-left: 30px;padding: 20px; border-radius: 15px;"
+            <h4>@Model.Username</h4>
+            <h4>@Model.FirstName</h4>
+            <h4>@Model.LastName</h4>
+            <h4>@Model.Email</h4>
+            <h4>@Model.PhoneNumber</h4>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4 col-xs-12" style="background-color:#c29c06; display:inline-block;padding: 20px; border-radius: 15px; color:ivory;">
+        <h2 class="title">Orders Information</h2>
+        @if (Model.GameCopies != null)
+        {
+            <h3 class="game-info-item" style="margin-left: 30px;">Game Copies borrowed: @Model.GameCopies.Count()</h3>
+        }
+        else
+        {
+            <h3 class="game-info-item" style="margin-left: 30px;">Game Copies borrowed: none</h3>
 
-<h2>Index</h2>
+        }
+        @if (Model.Orders != null)
+        {
+            <h3 class="game-info-item" style="margin-left: 30px;">Orders: @Model.Orders.Count, finished: @Model.Orders.Where(o => o.IsFinishedAt != null).Count()</h3>
+        }
+        else
+        {
+            <h3 class="game-info-item" style="margin-left: 30px;">Orders: 0</h3>
+        }
+        <h3 class="title" ><a href="\Order\ViewUserOrders" style="color:lightskyblue !important; font-style:oblique">View Orders</a></h3>
+    </div>
+    <div class="col-md-1"></div>
 
-<h2>@Model.ID</h2>
-<h2>@Model.Username</h2>
-<h2>@Model.FirstName</h2>
-<h2>@Model.LastName</h2>
-<h2>@Model.Email</h2>
-<h2>@Model.PhoneNumber</h2>
-@if (@Model.GameCopies != null)
-{
-    <h2>Game Copies borrowed - @Model.GameCopies.Count</h2>
-}
-else
-{
-    <h2>Game Copies borrowed - 0</h2>
 
-}
-@if (@Model.Orders != null)
-{
-    <h2>Orders - @Model.Orders.Count</h2>
-}
-else
-{
-    <h2>Orders - 0</h2>
 
-}
+
