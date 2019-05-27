@@ -1,0 +1,61 @@
+﻿@model GB.Web.ViewModels.ViewOrdersVM
+@{
+    ViewBag.Title = "My Orders";
+}
+
+
+<div class="col-md-1"></div>
+<div class="col-md-10 user-orders">
+    <h2 class="title">My Orders</h2>
+    @if (Model.Orders.Count != 0)
+    {
+        <table class="table table-borderless table-responsive order-table">
+            <thead>
+                <tr>
+                    <th>Order Number</th>
+                    <th>Expires In</th>
+                    <th>Is Returned</th>
+
+                </tr>
+                @foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Get", "Order", new { orderID = order.ID })">@order.ID</a></td>
+                        <td>
+                            @if (order.ExpiresAt >= DateTime.Now && @order.ExpiresAt.Subtract(DateTime.Now).Days != 1)
+                            {
+                                <span>@order.ExpiresAt.Subtract(DateTime.Now).Days days left</span>
+                            }
+                            else if (order.ExpiresAt >= DateTime.Now && @order.ExpiresAt.Subtract(DateTime.Now).Days == 1)
+                            {
+                                <span>@order.ExpiresAt.Subtract(DateTime.Now).Days day left</span>
+                            }
+                            else
+                            {
+                                <span>EXPIRED</span>
+                            }
+                        </td>
+                        <td>
+                            @if (order.IsFinishedAt != null)
+                            {
+                                <span>Yes</span>
+                            }
+                            else
+                            {
+                                <span>No</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </thead>
+        </table>
+
+    }
+    else
+    {
+        <h3>You don't have any orders yet. Go add some!</h3>
+    }
+</div>
+<div class="col-md-1"></div>
+
+

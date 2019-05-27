@@ -1,0 +1,92 @@
+﻿@model List<GB.Data.Dto.OrderDto>
+@{
+    ViewBag.Title = "Orders";
+}
+
+<div class="col-md-1"></div>
+<div class="col-md-10 user-orders">
+    <h2 class="title">All orders</h2>
+    <h4 class="title">@Model.Count found.</h4>
+    <table class="table table-responsive table-borderless">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>CreatedAt</th>
+                <th>ExpiresAt</th>
+                <th>Days left</th>
+                <th>Penalty</th>
+                <th>Total Price</th>
+                <th>Total Price with Penalty</th>
+                <th>Is Returned</th>
+                <th>Game Copies</th>
+                <th></th>
+
+            </tr>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.ID</td>
+                    <td>@order.User.FirstName @order.User.LastName </td>
+                    <td>@order.CreatedAt.ToShortDateString()</td>
+                    <td>@order.ExpiresAt.ToShortDateString()</td>
+                    <td>
+                        @if (order.ExpiresAt >= DateTime.Now)
+                        {
+                            <span>@order.ExpiresAt.Subtract(order.CreatedAt).Days days</span>
+                        }
+                        else
+                        {
+                            <span>EXPIRED</span>
+                        }
+                    </td>
+                    <td>
+                        @if (order.ExpiresAt < DateTime.Now)
+                        {
+                            <span>@order.ExpiresAt.Subtract(order.CreatedAt).Days * 0.30</span>
+                        }
+                        else
+                        {
+                            <span></span>
+                        }
+                    </td>
+                    <td>@order.TotalPrice</td>
+                    <td>
+                        @if (order.ExpiresAt < DateTime.Now)
+                        {
+                            <span>@order.TotalPrice+@order.ExpiresAt.Subtract(order.CreatedAt).Days * 0.30</span>
+                        }
+                        else
+                        {
+                            <span>@order.TotalPrice</span>
+                        }
+                    </td>
+                    <td>
+                        @if (order.IsFinishedAt != null)
+                        {
+                            <span>Yes</span>
+                        }
+                        else
+                        {
+                            <span>No</span>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var orderGameCopy in order.OrderGameCopies)
+                        {
+                            <span><a href="@Url.Action("ViewGame", "Game", new { gameID = orderGameCopy.GameID})">@orderGameCopy.GameName</a>, @orderGameCopy.LocationName</span><br /><br />
+                        }
+                    </td>
+                    <td>
+                        <button class="btn btn-primary finish" data-slno="@order.ID" onclick="location.href='@Url.Action("FinishOrder","A_Order", new { orderID =  order.ID})'">
+                            Finish Order
+                        </button>
+                    </td>
+                </tr>
+            }
+        </thead>
+    </table>
+</div>
+<div class="col-md-1"></div>
+
+

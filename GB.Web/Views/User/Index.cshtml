@@ -1,0 +1,29 @@
+﻿@using GB.Data.Dto
+@model List<UserDto>
+@{
+    ViewBag.Title = "Użytkownicy";
+}
+<br/>
+<table class="table table-borderless table-responsive">
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Role</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.PhoneNumber</td>
+                <td>@user.Role</td>
+            </tr>
+        }
+    </thead>
+</table>
+

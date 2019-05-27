@@ -1,0 +1,45 @@
+﻿@model GB.Data.Dto.OrderDto
+@{
+    ViewBag.Title = "Order";
+}
+
+<div class="col-md-1"></div>
+<div class="col-md-10 user-orders">
+    <h2 class="title">Order nb. @Model.ID</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="game-info-title">Created At: </h4><h5 class="game-info-item">@Model.CreatedAt.ToShortDateString()</h5>
+            <h4 class="game-info-title">Expires In: </h4><h5 class="game-info-item">
+                @if (Model.ExpiresAt >= DateTime.Now)
+                {
+                    <span>@Model.ExpiresAt.Subtract(DateTime.Now).Days days left</span>
+                }
+                else
+                {
+                    <span>EXPIRED</span>
+                }
+            </h5>
+            <h4 class="game-info-title">Total Price: </h4><h5 class="game-info-item">@Model.TotalPrice</h5>
+            <h4 class="game-info-title">Is Returned: </h4><h5 class="game-info-item">
+                @if (Model.IsFinishedAt != null)
+                {
+                    <span>Yes</span>
+                }
+                else
+                {
+                    <span>No</span>
+                }
+            </h5>
+        </div>
+        <div class="col-md-6">
+            <h3 class="title">Game Copies of Order:</h3>
+            @foreach (var orderGameCopy in Model.OrderGameCopies)
+            {
+            <h5 class="game-info-item"><a href="@Url.Action("ViewGame", "Game", new { gameID = orderGameCopy.GameID})">@orderGameCopy.GameName</a>, @orderGameCopy.LocationName</h5><br /><br />
+            }
+        </div>
+    </div>
+</div>
+<div class="col-md-1"></div>
+   
+

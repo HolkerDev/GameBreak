@@ -1,0 +1,295 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Advent+Pro|Pontano+Sans|Shadows+Into+Light+Two&display=swap');
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color:lavender;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+.navbar{
+    background-color:white;
+    border: none !important;
+    border-radius: 60px;
+    padding: 10px;
+    vertical-align:middle;
+    margin:20px 20px 0 20px;
+}
+
+.navbar-collapse {
+    vertical-align: middle !important;
+    padding-top: 5px;
+    padding-bottom: 0px !important;
+    border: none !important;
+}
+
+.navbar-nav li a, .navbar-brand {
+    color: dimgray !important;
+}
+
+.navbar-nav li a {
+    font-size: 150%;
+    font-family: 'Advent Pro', sans-serif;
+    padding: 10px 30px 10px 30px;
+}
+
+.navbar-brand {
+    font-size: 250%;
+    font-family: 'Shadows Into Light Two', cursive;
+}
+
+
+.navbar-header{
+    text-align:center;
+}
+
+.navbar-nav li a:hover {
+    background-color: #e6b800 !important;
+    border-radius: 60px;
+    color: ivory !important;
+}
+
+.navbar-toggle {
+    background-color: #e6b800 !important;
+    color: ivory;
+    border: none;
+}
+
+.body-content{
+    margin-top:  10vh;
+}
+
+.navbar .container {
+    margin-left: 20px;
+}
+
+footer p{
+    color: dimgray !important;
+}
+
+footer{
+    margin-top: 5vh;
+}
+
+.main-content {
+    background-image: linear-gradient(to right, #C782EF, #9290b7);
+    /*background-color: #C782EF !important;*/
+    border-radius: 10px;
+    padding: 15px;
+    color: ivory;
+    font-family: 'Pontano Sans', sans-serif;
+    min-height: 70vh;
+}
+
+.home-pic {
+    /*background: url("https://i.pinimg.com/564x/91/5a/fb/915afbab462ab81ac1cce27c12738dfc.jpg") no-repeat;*/
+    background-size: 100% 100%;
+    background-position: center;
+    height: 65vh;
+    width: 30vw;
+}
+
+.content {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #b8b3ff;
+    font-family: 'Pontano Sans', sans-serif;
+}
+
+#games-item {
+    text-align:center;
+    padding: 10px;
+}
+
+
+.game-name a {
+    color: #0f0e1e;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 120%;
+}
+
+.game-price {
+    background-color: #902dff;
+    color: ivory;
+    padding: 10px;
+    border-radius: 20px;
+
+}
+
+img {
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #57576b;
+}
+
+.title {
+    font-family: 'Advent Pro', sans-serif;
+    margin-left: 30px;
+}
+
+.game-title {
+    font-family: 'Shadows Into Light Two', cursive;
+    background-color: #5f5c96;
+    border-radius: 15px;
+    padding: 8px;
+}
+
+.game-content{
+    color: ivory;
+    padding: 30px;
+    background-image: linear-gradient(to right, #C782EF, #788fff);
+    border-radius: 10px;
+    min-height: 70vh;
+}
+
+.game-info-title {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 150%;
+    font-style: oblique;
+    padding: 5px;
+}
+
+.game-info-item {
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 110%;
+}
+
+.add {
+    background-color: #2b9307 !important;
+    border: none;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 150%;
+    color: ivory !important;
+}
+
+.add:hover, .add:focus, .add:active {
+    background-color: #46a327 !important;
+}
+
+.modal-body {
+    background-color: gainsboro;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.modal-header {
+    background-color: #766deb !important;
+    color: ivory !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#desc {
+    background-image: linear-gradient(to right, #b360e2, #788fff);
+    border-radius: 15px;
+}
+
+#login {
+    background-color: #948cff;
+    border-radius: 15px;
+    color: ivory !important;
+    padding: 20px;
+}
+
+.label {
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 120%;
+}
+
+.profile-content {
+    background-image: linear-gradient(to right, #C782EF, #9290b7);
+    /*background-color: #C782EF !important;*/
+    border-radius: 10px;
+    padding: 15px;
+    color: ivory;
+    font-family: 'Pontano Sans', sans-serif;
+}
+
+.user-orders {
+    background-color: #90b6b7;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+table{
+    background-color: ivory;
+    color: dimgray!important;
+    border-radius: 10px;
+    border: none!important;
+}
+
+.game-info-item{
+    background-color: ivory !important;
+    color: dimgray !important;
+    display:inline-block;
+    padding: 8px !important;
+    border-radius: 10px !important;
+    margin: 4px !important;
+}
+
+.user-cart {
+    background-color: #C782EF;
+    border-radius: 10px;
+    padding: 15px;
+    color: ivory;
+}
+
+.add a{
+    color: ivory!important;
+}
+
+.cancel {
+    background-color: #f52f14 !important;
+    border: none;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 130%;
+    color: ivory !important;
+}
+
+.cancel:hover, .cancel:focus, .cancel:active {
+    background-color: #ff523a !important;
+}
+
+.cancel a {
+    color: ivory !important;
+}
+
+.finish, .edit {
+    background-color: #3e9660 !important;
+    border: none;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 130%;
+    color: ivory !important;
+}
+
+    .edit:hover, .edit:focus, .edit:active {
+        background-color: #6ab989 !important;
+    }
+
+    .edit a {
+        color: ivory !important;
+    }
+
+.game-add {
+    background-color: #db8cff;
+    border-radius: 15px;
+    color: ivory !important;
+    padding: 20px;
+}

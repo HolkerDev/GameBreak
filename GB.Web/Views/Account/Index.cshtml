@@ -1,0 +1,48 @@
+﻿@model GB.Data.Dto.UserDto
+@{
+    ViewBag.Title = "Profile";
+}
+    <div class="col-md-1"></div>
+    <div class="main-content col-md-10 col-xs-12">
+        <h2 class="title">Profile</h2>
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div style="background-color:#d9abf3; margin-left: 30px;padding: 20px; border-radius: 15px;"
+                    <h4>@Model.Username</h4>
+                    <h4>@Model.FirstName</h4>
+                    <h4>@Model.LastName</h4>
+                    <h4>@Model.Email</h4>
+                    <h4>@Model.PhoneNumber</h4>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12" >
+                <div style="background-color:#c29c06; padding: 20px; border-radius: 15px;">
+                    <h2 class="title">Orders Information</h2>
+                    @if (Model.GameCopies != null)
+                    {
+                        <h3 class="game-info-item" style="margin-left: 30px;">Game Copies borrowed: @Model.GameCopies.Count()</h3>
+                    }
+                    else
+                    {
+                        <h3 class="game-info-item" style="margin-left: 30px;">Game Copies borrowed: none</h3>
+
+                    }
+                    @if (Model.Orders != null)
+                    {
+                        <h3 class="game-info-item" style="margin-left: 30px;">Orders: @Model.Orders.Count, finished: @Model.Orders.Where(o => o.IsFinishedAt != null).Count()</h3>
+                    }
+                    else
+                    {
+                        <h3 class="game-info-item" style="margin-left: 30px;">Orders: 0</h3>
+                    }
+                    <h3 class="title"><a href="\Order\ViewUserOrders" style="color:lightskyblue !important; font-style:oblique">View Orders</a></h3>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+
+
+
+
