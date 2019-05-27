@@ -188,9 +188,17 @@ namespace GB.Data.Repositories
         */
         public User ValidateUser(string username, string password)
         {
-            User user = new User();
-            user = _dbContext.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
-            return user;
+            try
+            {
+                User user = new User();
+                user = _dbContext.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         //!  Metoda repozytorium GetUserByUsername. 
@@ -199,12 +207,20 @@ namespace GB.Data.Repositories
         */
         public User GetUserByUsername(string username)
         {
-            User user = new User();
-            var query = _dbContext.Users.Include(u=>u.Role).Where(u => u.Username == username);
-            user = query.SingleOrDefault();
-            var qrole = _dbContext.Roles.Include(r => r.Users).Where(r => r.ID == user.RoleID);
-            var role = qrole.SingleOrDefault();
-            return user;
+            try
+            {
+                User user = new User();
+                var query = _dbContext.Users.Include(u=>u.Role).Where(u => u.Username == username);
+                user = query.SingleOrDefault();
+                var qrole = _dbContext.Roles.Include(r => r.Users).Where(r => r.ID == user.RoleID);
+                var role = qrole.SingleOrDefault();
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         //!  Metoda repozytorium GetUserRolesByUsername. 
@@ -213,9 +229,17 @@ namespace GB.Data.Repositories
         */
         public string[] GetUserRolesByUsername(string username)
         {
-            string[] roles = new string[] { };
-            roles = _dbContext.Users.Include(x => x.Role).Select(x => x.Role.Name).ToArray();
-            return roles;
+            try
+            {
+                string[] roles = new string[] { };
+                roles = _dbContext.Users.Include(x => x.Role).Select(x => x.Role.Name).ToArray();
+                return roles;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }

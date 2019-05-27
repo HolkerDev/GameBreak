@@ -7,7 +7,7 @@
 <div class="col-md-1"></div>
 <div class="col-md-10 user-cart">
     <h2 class="title">Cart</h2>
-    @if (Model != null)
+    @if (Model != null && Model.Count != 0)
     {
         <table class="table table-hover table-responsive table-borderless">
             <thead>
@@ -34,9 +34,9 @@
         </table>
         <button class="btn btn-primary add">@Html.ActionLink("Checkout order", "Checkout", "Order")</button>
     }
-    else
+    else if(Model == null || Model.Count == 0)
     {
-        <h2>There are no items in Your cart yet. Go add them!</h2>
+        <h2 class="title">There are no items in Your cart yet. Go add them!</h2>
     }
 </div>
 <div class="col-md-1"></div>

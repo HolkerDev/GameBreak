@@ -199,7 +199,7 @@ namespace GB.Data.Repositories
                         GenreName = gg.Genre.Name
                     }).ToList(),
                     Image = g.Image
-                }).ToList();
+                }).OrderBy(g=>g.Name).ToList();
 
                 return games;
             }
